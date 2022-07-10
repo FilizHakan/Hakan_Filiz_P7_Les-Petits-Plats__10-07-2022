@@ -1,7 +1,7 @@
-export const createTags = (dropdown, name) => {
+export const createTags = (name, dropDownItem) => {
     return `  
-        <div class="tag tag${dropdown}">
-            <span class="tagTxt">${name}</span>
+        <div class="tag tag${dropDownItem}">
+            <span class="tagText">${name}</span>
             <i class="bi bi-x-circle"></i>
         </div>
     `
