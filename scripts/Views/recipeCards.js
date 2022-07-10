@@ -1,4 +1,4 @@
-export const createRecipeCards = (recipe) =>
+export const createRecipeCards = (id, name, number) =>
 {
     return `  
     <div class="dropdownContainer">
@@ -10,8 +10,8 @@ export const createRecipeCards = (recipe) =>
                 <input type="text" class="${id} displayNone" id="${id}" placeholder="Rechercher...">
                 <i class="bi bi-chevron-down arrowClose"></i>
             </div>
-            <div role="listbox" class="containerOption${nb} containerOption dropdown${name} displayNone">
-                <ul class="elementList${nb}"></ul>
+            <div role="listbox" class="containerOption${number} containerOption dropdown${name} displayNone">
+                <ul class="elementList${number}"></ul>
             </div>
         </div>
     </div>
