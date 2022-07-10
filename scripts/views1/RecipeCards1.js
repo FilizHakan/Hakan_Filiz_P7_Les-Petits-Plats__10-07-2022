@@ -8,13 +8,13 @@ export default class RecipeCards {
       this._description = recipe.description;
     }
   
-    /**  Méthode pour créer une carte de photographe*/
+    // Create recipe cards
     renderRecipeCards() {
       const recipeWrapper = document.createElement("div");
-      recipeWrapper.setAttribute("class", "col-sm-6 col-lg-4 ");
+      recipeWrapper.setAttribute("class", "small-column-6 large-column-4 ");
   
       const recipeCard = `
-                <article class="container p-0 recipe overflow">
+                <article class="container recipe overflow">
                     <!-- picture background - grey -->
                     <div class="row">
                       <div class="grey"></div>
@@ -22,7 +22,7 @@ export default class RecipeCards {
                     <!-- recipe content -->
                     <div class="row">
                       <div class="recipe__content">
-                        <div class="container p-4">
+                        <div class="container">
                           <!-- Time and title -->
                           <div class="row">
                             <div class="col-6 col-sm-7 ps-2 pe-0">
