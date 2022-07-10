@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
