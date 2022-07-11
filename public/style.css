@@ -124,9 +124,51 @@ article {
     h1, h2 {
         font-size: 0.9em;
     }
-
-
 }
+
+.search input{
+    background-color:#E7E7E7 ;
+    width: 100%;
+    border-radius: 5px;
+    color :#0000006c;
+    border:none;
+    margin-bottom: 20px;
+    height: 50px;
+}
+.search button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top:40%;
+    right:2%;
+}
+
+.search, .ingredients , .ustensils , .appareils {
+    position: relative;
+}
+
+.ingredients i, .ustensils i, .appareils i {
+    position: absolute;
+    top:55%;
+    right:3%;
+    color:white;
+    margin-right:5px;
+}
+
+.ingredients input, .ustensils input, .appareils input {
+    color: white;
+    border-radius: 5px;
+    border: none;
+    height: 50px;
+    padding: 20px;
+    width: 100%;
+}
+
+.search input:focus:active{
+    outline:none;
+    box-shadow: inset 2px 2px 5px #b0b0b05d;
+}
+
 
 @media (max-width:1200px){
     .recipe{
@@ -180,6 +222,10 @@ article {
         margin-right: 5px;
     }
 
+    .search button {
+        right: 5%;
+    }
+
     h1, h2 {
         font-size: 1.2em;
     }
@@ -188,6 +234,16 @@ article {
     }
     p{
     font-size:0.85em;
+    }
+
+    .search button {
+        font-size: 12.5px;
+    }
+
+    .search input[placeholder] {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
 }
