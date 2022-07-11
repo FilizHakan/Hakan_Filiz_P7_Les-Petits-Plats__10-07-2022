@@ -34,10 +34,8 @@ export default class RecipeCards
                             <div class="col-sm-7 ps-2 pe-0 col-6">
                               <h1>${this._name}</h1>
                             </div>
-                            <div
-                              class="col-md-4 offset-lg-0 col-lg-5 offset-2 col-4  col-sm-5 offset-md-1 text-end offset-xl-1 col-xl-4"
-                            >
-                              <i class="far fa-clock"></i>
+                            <div class="col-md-4 offset-lg-0 col-lg-5 offset-2 col-4  col-sm-5 offset-md-1 text-end offset-xl-1 col-xl-4">
+                              <i class="bi bi-clock"></i>
                               <h2 class="d-inline ms-2">${this._time} min</h2>
                             </div>
                           </div>
@@ -50,8 +48,8 @@ export default class RecipeCards
                               </ul>
                             </div>
 
-                            <!-- Steps to follow -->
-                            <div class="p-0 col-lg-6">
+                            <!-- Card resume -->
+                            <div class="cardResume p-0 col-lg-6">
                               <p class="description">
                                 ${this._description}
                               </p>

@@ -45,8 +45,11 @@ export default class Recipes
                 // Html to add with push method
                 ingredients.push(` 
                 <li>
-                  <div class="ingredient-item list-container">
-                    ${this._ingredients[j].ingredient} : ${this._ingredients[j].quantity} ${this._ingredients[j].unit}
+                  <div class="d-inline ingredient-item">
+                    ${this._ingredients[j].ingredient} : 
+                  </div>
+                  <div class="quantity d-inline">
+                    ${this._ingredients[j].quantity} ${this._ingredients[j].unit}
                   </div>
                 </li>`);
                 j++;
@@ -56,8 +59,11 @@ export default class Recipes
                 // Html to add with push method
                 ingredients.push(`
                 <li>
-                  <div class="ingredient-item list-container">
-                    ${this._ingredients[j].ingredient} : ${this._ingredients[j].quantity}
+                  <div class="d-inline ingredient-item">
+                    ${this._ingredients[j].ingredient} : 
+                  </div>
+                  <div class="quantity d-inline">
+                    ${this._ingredients[j].quantity}
                   </div>
                 </li>`);
                 j++;
@@ -68,7 +74,7 @@ export default class Recipes
               // Html to add with push method
               ingredients.push(`
               <li>
-                <div class="ingredient-item list-container">
+                <div class="d-inline ingredient-item">
                   ${this._ingredients[j].ingredient} 
                 </div>
               </li>`);
@@ -82,8 +88,19 @@ export default class Recipes
   
     get description() 
     {
+      let i = 0;
 
-        return this._description;
-    }
+    if (new RegExp("^\\s*\\S+(?:\\s+\\S+){0,40}\\s*$").test(this._description)) 
+    {
+      return this._description;
     
+    } else {
+
+      let descriptionCard = this._description.match(new RegExp("^([:a-zA-ZÀ-ž0-9\\^\\(\\)\\?\\!\\+\\*,\\.\\'\"/°]{0,}[\\s\\.]){0,40}"));
+      console.log(this._description[i]);
+      
+      return descriptionCard[i].concat("..."); // Add ellipsis at the end of the text description
+    }
+    }
+
   }

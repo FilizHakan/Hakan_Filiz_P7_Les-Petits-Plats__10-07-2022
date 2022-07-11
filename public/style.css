@@ -1,6 +1,51 @@
 *, body {
-    
+    font-family: 'lato', "Arial", "Sans-Serif";
+    line-height: 1;
     box-sizing: border-box;
+}
+
+header img {
+    width: 280px;
+}
+
+h1{
+    font-size: 1.2em;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+ul li {
+    list-style: none;
+    font-size: 15px;
+}
+
+p {
+    font-size: 0.95rem;
+}
+
+.cardResume {
+    overflow-x: hidden;
+    max-height: 260px;
+    line-height: 5;
+}
+
+.dropDownMenusArea {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.ingredient-item {
+    font-weight: 600;
+}
+
+cardResume {
+    max-width: 210px;
 }
 
 
