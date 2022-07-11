@@ -20,17 +20,17 @@ export default class RecipeCards
                 <article class="container recipe p-0">
 
                     <!-- picture background - grey -->
-                    <div class="row">
-                      <div class="grey"></div>
+                    <div>
+                      <div class="grey-background"></div>
                     </div>
 
                     <!-- recipe content -->
-                    <div class="row">
+                    <div>
                       <div class="content">
                         <div class="container p-4">
 
                           <!-- Time and title -->
-                          <div class="row">
+                          <div class="flex">
                             <div class="col-sm-7 ps-2 pe-0 col-6">
                               <h1>${this._name}</h1>
                             </div>
@@ -41,7 +41,7 @@ export default class RecipeCards
                           </div>
 
                           <!-- ingredients -->
-                          <div class="row pt-2 mt-2">
+                          <div class="flex pt-2 mt-2">
                             <div class="p-0 pe-2 col-lg-6">
                               <ul class="ps-2">
                                 ${this._ingredients}
