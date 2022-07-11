@@ -1,3 +1,5 @@
+// Model to get recipes' data
+
 export default class Recipes 
 {
     constructor(recipe) 
@@ -26,58 +28,62 @@ export default class Recipes
   
     get ingredients() 
     {
-      let ingredients = [];
-      let i = 0;
-      do {
-        // If an ingredient does exist
-        if (this._ingredients[i].ingredient) 
-        {
-          // If a quantity does exist
-          if (this._ingredients[i].quantity) 
+
+        let ingredients = []; // Array to fetch whatever we need
+        let j = 0;
+
+        do { // Loop do and while (it goes until everything is fetched)
+
+          if (this._ingredients[j].ingredient) // First condition if an ingredient does exist
           {
-            // If a unity does exist
-            if (this._ingredients[i].unit) 
+
+            if (this._ingredients[j].quantity) // Second condition if a quantity does exist
             {
-              ingredients.push(`<li>
-              <p class="recipe__ingredient d-inline">
-               ${this._ingredients[i].ingredient} :
-              </p>
-              <p class="recipe__quantity d-inline">${this._ingredients[i].quantity}${this._ingredients[i].unit}</p>
-            </li>`);
-              i++;
+              // If a unity does exist
+              if (this._ingredients[j].unit) // Third condition if a unit does exist
+              {
+                // Html to add with push method
+                ingredients.push(` 
+                <li>
+                  <div class="ingredient-item list-container">
+                    ${this._ingredients[j].ingredient} : ${this._ingredients[j].quantity} ${this._ingredients[j].unit}
+                  </div>
+                </li>`);
+                j++;
+
+              } else {
+
+                // Html to add with push method
+                ingredients.push(`
+                <li>
+                  <div class="ingredient-item list-container">
+                    ${this._ingredients[j].ingredient} : ${this._ingredients[j].quantity}
+                  </div>
+                </li>`);
+                j++;
+              }
+
             } else {
-              ingredients.push(`<li>
-            <p class="recipe__ingredient d-inline">
-             ${this._ingredients[i].ingredient} :
-            </p>
-            <p class="recipe__quantity d-inline">${this._ingredients[i].quantity}</p>
-          </li>`);
-              i++;
+
+              // Html to add with push method
+              ingredients.push(`
+              <li>
+                <div class="ingredient-item list-container">
+                  ${this._ingredients[j].ingredient} 
+                </div>
+              </li>`);
+              j++;
             }
-          } else {
-            ingredients.push(`<li>
-          <p class="recipe__ingredient d-inline">
-           ${this._ingredients[i].ingredient} 
-          </p>
-        </li>`);
-            i++;
           }
-        }
-      } while (i < this._ingredients.length); // It goes until the list of ingredients is not completely added
-      return ingredients.join(" ");
+        } while (j < this._ingredients.length); // Closing the loop with while : It goes until the list of ingredients is completely added
+        
+        return ingredients.join(" "); // Return and add the elements of the array (list of ingredients that we've pushed)
     }
   
     get description() 
     {
-      if (new RegExp("^\\s*\\S+(?:\\s+\\S+){0,40}\\s*$").test(this._description)) 
-      {
+
         return this._description;
-
-      } else {
-        const cardDescription = this._description.match(new RegExp("^([:a-zA-ZÀ-ž0-9\\^\\(\\)\\?\\!\\+\\*,\\.\\'\"/°]{0,}[\\s\\.]){0,40}"));
-        console.log(cardDescription[0]);
-
-        return cardDescription[0].concat("...");
-      }
     }
+    
   }
