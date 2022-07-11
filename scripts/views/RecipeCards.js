@@ -14,10 +14,10 @@ export default class RecipeCards
     renderRecipeCards() 
     {
       const recipeContainer = document.createElement("div");
-      recipeContainer.setAttribute("class", "small-column-6 large-column-4");
+      recipeContainer.setAttribute("class", "col-lg-4 col-sm-6");
   
       const recipeCard = `
-                <article class="container recipe overflow">
+                <article class="container recipe p-0">
 
                     <!-- picture background - grey -->
                     <div class="row">
@@ -27,7 +27,7 @@ export default class RecipeCards
                     <!-- recipe content -->
                     <div class="row">
                       <div class="content">
-                        <div class="container">
+                        <div class="container p-4">
 
                           <!-- Time and title -->
                           <div class="row">
@@ -43,7 +43,7 @@ export default class RecipeCards
                           </div>
 
                           <!-- ingredients -->
-                          <div class="row mt-2 pt-2">
+                          <div class="row pt-2 mt-2">
                             <div class="p-0 pe-2 col-lg-6">
                               <ul class="ps-2">
                                 ${this._ingredients}
