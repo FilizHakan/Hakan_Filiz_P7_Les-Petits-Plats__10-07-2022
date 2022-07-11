@@ -9,15 +9,18 @@ export default class Recipes
       this._description = recipe.description;
     }
   
-    get recipe() {
+    get recipe() 
+    {
       return this._recipe;
     }
   
-    get name() {
+    get name() 
+    {
       return this._name;
     }
   
-    get time() {
+    get time() 
+    {
       return this._time;
     }
   
@@ -27,11 +30,14 @@ export default class Recipes
       let i = 0;
       do {
         // If an ingredient does exist
-        if (this._ingredients[i].ingredient) {
+        if (this._ingredients[i].ingredient) 
+        {
           // If a quantity does exist
-          if (this._ingredients[i].quantity) {
+          if (this._ingredients[i].quantity) 
+          {
             // If a unity does exist
-            if (this._ingredients[i].unit) {
+            if (this._ingredients[i].unit) 
+            {
               ingredients.push(`<li>
               <p class="recipe__ingredient d-inline">
                ${this._ingredients[i].ingredient} :
@@ -63,17 +69,12 @@ export default class Recipes
   
     get description() 
     {
-
-      const regexInfWords = new RegExp("^\\s*\\S+(?:\\s+\\S+){0,40}\\s*$");
-  
-      const regexSupWords = new RegExp("^([:a-zA-ZÀ-ž0-9\\^\\(\\)\\?\\!\\+\\*,\\.\\'\"/°]{0,}[\\s\\.]){0,40}");
-  
-      if (regexInfWords.test(this._description)) 
+      if (new RegExp("^\\s*\\S+(?:\\s+\\S+){0,40}\\s*$").test(this._description)) 
       {
         return this._description;
 
       } else {
-        const cardDescription = this._description.match(regexSupWords);
+        const cardDescription = this._description.match(new RegExp("^([:a-zA-ZÀ-ž0-9\\^\\(\\)\\?\\!\\+\\*,\\.\\'\"/°]{0,}[\\s\\.]){0,40}"));
         console.log(cardDescription[0]);
 
         return cardDescription[0].concat("...");
