@@ -19,14 +19,14 @@ export default class FilterByUstensils
         }
 
     // =================================
-    //    HANDLING DATA - FOREACH LOOP
+    //    GET RECIPES - FOREACH LOOP
     // =================================
 
-    async recipeHandler () 
+    async getRecipes () 
     {
         const dataRecipes = await this._recipes;
 
-        dataRecipes.forEach(recipe => 
+        dataRecipes.forEach( (recipe) => 
         {
             recipe.display = true;
         });
@@ -38,12 +38,15 @@ export default class FilterByUstensils
 
     IsDisplayUstensilsDataTrue = (data, tab) => 
     {
-        data.forEach(recipe => {
+
+        data.forEach( (recipe) => 
+        {
             if (recipe.display == true) 
             {
-                recipe.ustensils.forEach(e => {
+                recipe.ustensils.forEach(e => 
+                    {
                     tab.push(e)
-                });
+                    });
             }
         })
     };
@@ -73,13 +76,13 @@ export default class FilterByUstensils
         }
     }
 
-    listenForUstensilOptions ()
+    listenForUstensilByClick ()
     {
         this.dropDownContainer.addEventListener('click', () => 
         {
     
             // Get all the recipes which are in display true
-            this.IsDisplayUstensilsDataTrue(dataRecipes, ustensils)
+            this.IsDisplayUstensilsDataTrue(dataRecipes, this.ustensils)
     
             // Take off doubles with the filter method
             const removeDuplicate = (ustArray) => ustArray.filter((item, pos) => 
@@ -107,9 +110,42 @@ export default class FilterByUstensils
         })
     }
 
-
-
     // ==============================
     //    EVENT LISTENER - BY INPUT
     // ==============================
+    listenForUstensilByInput()
+    {
+        this.input.addEventListener('input', () =>
+        {
+            // If more than 3 character typing value
+            if(this.input.value.length > 3) 
+            {
+                const valueTyping = this.input.value.toLowerCase();
+                
+                // Fetch ingredients fron the recipes which are in display true
+                this.IsDisplayUstensilsDataTrue(dataRecipes, this.ustensils);
+
+                // Take off doubles with the filter method
+                const removeDuplicate = (ustArray) => ustArray.filter((item, pos) => 
+                {
+                    return array.indexOf(item.toLowerCase()) == pos;
+                });
+
+                const filteredUstensilArray = removeDuplicate(this.ustensils);
+
+                filteredUstensilArray.forEach()
+
+
+            }
+        });
+    }
+
+    // ==============================================
+    //    EVENT LISTENER BY CLICK FOR TAG CREATION
+    // ==============================================
+
+    listenForTagCreation ()
+    {
+
+    }
 }
