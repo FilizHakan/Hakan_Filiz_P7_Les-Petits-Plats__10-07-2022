@@ -141,11 +141,11 @@ p {
     right:2%;
 }
 
-.search, .ingredients , .ustensils , .appareils {
+.search, .ingredients , .ustensils , .appliances {
     position: relative;
 }
 
-.ingredients i, .ustensils i, .appareils i {
+.ingredients i, .ustensils i, .appliances i {
     position: absolute;
     top:55%;
     right:3%;
@@ -155,7 +155,7 @@ p {
     font-weight: 900;
 }
 
-.ingredients input, .ustensils input, .appareils input {
+.ingredients input, .ustensils input, .appliances input {
     color: white;
     border-radius: 8px;
     border: none;
@@ -169,26 +169,26 @@ p {
     box-shadow: inset 2px 2px 5px #b0b0b05d;
 }
 
-.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appareils ::-webkit-input-placeholder {
+.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appliances ::-webkit-input-placeholder {
     color: white;
     opacity: 0.7;
 }
 
-.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appareils ::-moz-placeholder {
+.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appliances ::-moz-placeholder {
     color: white;
 }
 
-.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appareils :-ms-input-placeholder {
+.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appliances :-ms-input-placeholder {
     color: white;
 }
 
-.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appareils ::-ms-input-placeholder {
+.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appliances ::-ms-input-placeholder {
     color: white;
 }
 
 .ingredients ::placeholder, 
 .ustensils ::placeholder,
-.appareils ::placeholder {
+.appliances ::placeholder {
     color: white;
 }
 

@@ -1,4 +1,4 @@
-export default class TagListings 
+export default class ListElements 
 {
     constructor (data)
     {
@@ -6,6 +6,7 @@ export default class TagListings
         this._ingredients = data.ingredients;
         this._ustensils = data.ustensils;
         this._appliances = data.appliances;
+
     }
 
     // Render list of ingredients 
@@ -13,7 +14,7 @@ export default class TagListings
     renderIngredientsList ()
     {
         const ingredientsList = document.createElement('ul');
-        ingredientsList.setAttribute('class', 'displayNone listing ingredientsList col-sm-12');
+        ingredientsList.classList.add('displayNone listing ingredientsList col-sm-12');
 
         const listIng = `
         ${this._ingredients}
@@ -29,7 +30,7 @@ export default class TagListings
     renderAppliancesList ()
     {
         const appliancesList = document.createElement('ul');
-        appliancesList.setAttribute('class', 'displayNone listing appliancesList col-sm-12');
+        appliancesList.classList.add('displayNone listing appliancesList col-sm-12');
 
         const listApp = `
         ${this._applicances}
@@ -45,7 +46,7 @@ export default class TagListings
     renderUstencilsList ()
     {
         const ustensilsList = document.createElement('ul');
-        ustensilsList.setAttribute('class', 'displayNone listing ustencilsList col-sm-12');
+        ustensilsList.classList.add('listing ustencilsList col-sm-12');
 
         const listUst = `
         ${this._ustensils}
