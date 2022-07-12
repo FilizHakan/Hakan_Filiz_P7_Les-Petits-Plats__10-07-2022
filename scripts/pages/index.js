@@ -1,5 +1,5 @@
 import {recipes} from '../../data/recipes.js';
-import Recipes from "../classes/Recipes.js";
+import Recipes from "../models/Recipes.js";
 import RecipeCards from '../views/RecipeCards.js';
 
 function displayRecipeCards(recipes) {

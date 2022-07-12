@@ -13,14 +13,14 @@ header img {
 }
 
 h1{
-    font-size: 1.2em;
+    font-size: 1.280em;
     margin-bottom: 0;
     font-weight: 600;
     margin-left: -7px;
 }
 
 h2 {
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 700;
 }
 
@@ -54,7 +54,8 @@ p {
 }
 
 .cardResume {
-    max-width: 210px;
+    max-width: 260px;
+    padding-left: 50px;
     overflow: hidden;
 }
 
@@ -62,11 +63,11 @@ p {
     background-color: #C7BEBE;
     width: 100%;
     height: 178px;
-    border-radius: 5px;
+    border-radius: 8px 8px 0 0;
 }
 
 .content {
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 8px 8px;
 }
 
 .recipe {
@@ -75,17 +76,13 @@ p {
     cursor: pointer;
     height: 410px;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 2px 2px 10px 7px #b0b0b05d;
 }
 
 .recipe:hover {
     box-shadow: 2px 2px 10px 7px #7b7b7b5d;
 
-}
-
-article {
-    margin: 0 10px;
 }
 
 
@@ -129,8 +126,9 @@ article {
 .search input{
     background-color:#E7E7E7 ;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 8px;
     color :#0000006c;
+    opacity: 0.7;
     border:none;
     margin-bottom: 20px;
     height: 50px;
@@ -153,11 +151,13 @@ article {
     right:3%;
     color:white;
     margin-right:5px;
+    font-size: 18px;
+    font-weight: 900;
 }
 
 .ingredients input, .ustensils input, .appareils input {
     color: white;
-    border-radius: 5px;
+    border-radius: 8px;
     border: none;
     height: 50px;
     padding: 20px;
@@ -169,10 +169,34 @@ article {
     box-shadow: inset 2px 2px 5px #b0b0b05d;
 }
 
+.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appareils ::-webkit-input-placeholder {
+    color: white;
+    opacity: 0.7;
+}
+
+.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appareils ::-moz-placeholder {
+    color: white;
+}
+
+.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appareils :-ms-input-placeholder {
+    color: white;
+}
+
+.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appareils ::-ms-input-placeholder {
+    color: white;
+}
+
+.ingredients ::placeholder, 
+.ustensils ::placeholder,
+.appareils ::placeholder {
+    color: white;
+}
+
+
 
 @media (max-width:1200px){
     .recipe{
-        height: 450px;
+        height: 560px;
       
     }
     h1, h2 {
@@ -203,7 +227,7 @@ article {
 
 @media (max-width:770px){
     .recipe{
-        height: 600px;
+        height: 550px;
     }
 }
 
@@ -240,7 +264,31 @@ article {
         font-size: 12.5px;
     }
 
-    .search input[placeholder] {
+    .search ::-webkit-input-placeholder {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .search ::-moz-placeholder {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .search :-ms-input-placeholder {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .search ::-ms-input-placeholder {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .search ::placeholder {
         font-size: 13px;
         overflow: hidden;
         text-overflow: ellipsis;

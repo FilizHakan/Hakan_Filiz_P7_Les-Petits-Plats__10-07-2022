@@ -20,7 +20,7 @@ export default class RecipeCards
                 <article class="container recipe p-0">
 
                     <!-- picture background - grey -->
-                    <div>
+                    <div class="cardImage">
                       <div class="grey-background"></div>
                     </div>
 
