@@ -4,7 +4,7 @@ export default class TagListings
     {
         this._recipes = data;
         this._ingredients = data.ingredients;
-        this._ustencils = data.ustencils;
+        this._ustensils = data.ustensils;
         this._appliances = data.appliances;
     }
 
@@ -44,15 +44,15 @@ export default class TagListings
 
     renderUstencilsList ()
     {
-        const ustencilsList = document.createElement('ul');
-        ustencilsList.setAttribute('class', 'displayNone listing ustencilsList col-sm-12');
+        const ustensilsList = document.createElement('ul');
+        ustensilsList.setAttribute('class', 'displayNone listing ustencilsList col-sm-12');
 
         const listUst = `
-        ${this._ustencils}
+        ${this._ustensils}
               `;
 
-              ustencilsList.innerHTML = listUst;
+              ustensilsList.innerHTML = listUst;
 
-              return ustencilsList;
+              return ustensilsList;
     }
 }
