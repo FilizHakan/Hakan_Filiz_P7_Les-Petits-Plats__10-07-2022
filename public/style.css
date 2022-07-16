@@ -43,7 +43,7 @@ p {
     line-height: 5;
 }
 
-.dropDownMenusArea {
+.dropDownMenusArea{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -102,15 +102,15 @@ p {
     margin-top: var(--bs-gutter-y);
 }
 
-.first-background{
+.blue-background{
     background-color: #3282F7;
 }
 
-.second-background{
+.green-background{
     background-color:#68D9A4 ;
 }
 
-.third-background{
+.salmon-background{
     background-color:#ED6454 ;
 }
 
@@ -133,6 +133,7 @@ p {
     margin-bottom: 20px;
     height: 50px;
 }
+
 .search button {
     background-color: transparent;
     border: none;
@@ -141,11 +142,11 @@ p {
     right:2%;
 }
 
-.search, .ingredients , .ustensils , .appliances {
+.search, .ingredients , .ustensils , .appareils {
     position: relative;
 }
 
-.ingredients i, .ustensils i, .appliances i {
+.ingredients i, .ustensils i, .appareils i {
     position: absolute;
     top:55%;
     right:3%;
@@ -155,7 +156,7 @@ p {
     font-weight: 900;
 }
 
-.ingredients input, .ustensils input, .appliances input {
+.ingredients input, .ustensils input, .appareils input {
     color: white;
     border-radius: 8px;
     border: none;
@@ -169,26 +170,62 @@ p {
     box-shadow: inset 2px 2px 5px #b0b0b05d;
 }
 
-.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appliances ::-webkit-input-placeholder {
-    color: white;
-    opacity: 0.7;
+.displayNone
+{
+    display: none;
 }
 
-.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appliances ::-moz-placeholder {
-    color: white;
-}
-
-.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appliances :-ms-input-placeholder {
+.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appareils ::-webkit-input-placeholder {
     color: white;
 }
 
-.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appliances ::-ms-input-placeholder {
+.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appareils ::-moz-placeholder {
+    color: white;
+}
+
+.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appareils :-ms-input-placeholder {
+    color: white;
+}
+
+.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appareils ::-ms-input-placeholder {
+    color: white;
+}
+
+.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appareils ::-webkit-input-placeholder {
+    color: white;
+}
+
+.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appareils ::-moz-placeholder {
+    color: white;
+}
+
+.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appareils :-ms-input-placeholder {
+    color: white;
+}
+
+.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appareils ::-ms-input-placeholder {
+    color: white;
+}
+
+.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appareils ::-webkit-input-placeholder {
+    color: white;
+}
+
+.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appareils ::-moz-placeholder {
+    color: white;
+}
+
+.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appareils :-ms-input-placeholder {
+    color: white;
+}
+
+.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appareils ::-ms-input-placeholder {
     color: white;
 }
 
 .ingredients ::placeholder, 
 .ustensils ::placeholder,
-.appliances ::placeholder {
+.appareils ::placeholder {
     color: white;
 }
 

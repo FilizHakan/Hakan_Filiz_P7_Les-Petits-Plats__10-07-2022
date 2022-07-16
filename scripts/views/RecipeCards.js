@@ -11,7 +11,7 @@ export default class RecipeCards
     }
   
     // Create recipe cards
-    renderRecipeCards() 
+    renderCards() 
     {
       const recipeContainer = document.createElement("div");
       recipeContainer.setAttribute("class", "col-lg-4 col-sm-6");

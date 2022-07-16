@@ -1,6 +1,6 @@
 // Model to get recipes' data
 
-export default class Recipes 
+export default class Recipe 
 {
     constructor(recipe) 
     {
