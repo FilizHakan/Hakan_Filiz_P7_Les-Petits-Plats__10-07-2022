@@ -60,7 +60,7 @@ export default class Filter
     openDropdown()
     {
         document.querySelector(`div[data-id="${this.ref}"] .options`).style.display = 'block';
-        document.querySelector(`.dropDown--${this.ref}`).style.width = "257%";
+        document.querySelector(`.dropDown--${this.ref}`).style.width = "239%";
         document.querySelector(`div[data-id="${this.ref}"] .arrowOpen`).style.display = 'none';
         document.querySelector(`div[data-id="${this.ref}"] .arrowClose`).style.display = 'block';
     }
