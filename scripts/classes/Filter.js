@@ -9,6 +9,11 @@ export default class Filter
         this.color = color;
         this.all = new Set();
         this.recipes = recipes;
+
+        // Filters
+        this.filterInIngredients = [];
+        this.filterInAppliances = [];
+        this.filterInUstensils = [];
     }
 
     // Display lists (tags for each dropdown)
@@ -17,7 +22,7 @@ export default class Filter
         let html=''
         this.all.forEach(item =>
             {
-                html += `<span style='border: 2px solid #eee; padding: 5px 20px">` + item + `</span>`
+                html += `<span class="list-group-item ${this.color}-background col-4 col-sm-6 col-lg-6 display-inline ${this.ref}__item" tabindex="0">` + item + `</span>`
             });
 
             document.querySelector(`div[data-id="${this.ref}"] .options`).innerHTML = html;
@@ -55,6 +60,7 @@ export default class Filter
     openDropdown()
     {
         document.querySelector(`div[data-id="${this.ref}"] .options`).style.display = 'block';
+        document.querySelector(`.dropDown--${this.ref}`).style.width = "257%";
         document.querySelector(`div[data-id="${this.ref}"] .arrowOpen`).style.display = 'none';
         document.querySelector(`div[data-id="${this.ref}"] .arrowClose`).style.display = 'block';
     }
@@ -62,7 +68,15 @@ export default class Filter
     closeDropdown()
     {
         document.querySelector(`div[data-id="${this.ref}"] .options`).style.display = 'none';
+        document.querySelector(`.dropDown--${this.ref}`).style.width = "100%";
         document.querySelector(`div[data-id="${this.ref}"] .arrowClose`).style.display = 'none';
         document.querySelector(`div[data-id="${this.ref}"] .arrowOpen`).style.display = 'block';
+    }
+
+    // Function to get ingredients, appareils and ustensils
+
+    getFilterElements()
+    {
+        
     }
 }

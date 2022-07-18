@@ -30,6 +30,10 @@ ul li {
 }
 
 ul {
+    margin-left: 0px;
+}
+
+ul li .list-group-item {
     margin-left: -7px;
 }
 
@@ -43,7 +47,7 @@ p {
     line-height: 5;
 }
 
-.dropDownMenusArea{
+.dropDownMenusArea {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -53,10 +57,67 @@ p {
     font-weight: 600;
 }
 
+.list-group-item {
+    border-top-width: 0;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+.display-inline {
+    display: inline-block;
+}
+
+.ustensils__item:hover {
+    background-color: #f0513f;
+    cursor: pointer;
+}
+
+.ingredients__item:hover {
+    background-color: #0667fa;
+    cursor: pointer;
+}
+
+.appareils__item:hover {
+    background-color: #18db80;
+    cursor: pointer;
+}
+
+form {
+    position: relative;
+}
+
+.list {
+    display: block;
+    border-radius: 0px 0px 8px 8px;
+    width: 35%;
+}
+
+.options {
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+#listingredients,
+#listappareils,
+#listustensils {
+    position: absolute;
+    padding-bottom: 10px;
+}
 .cardResume {
     max-width: 260px;
     padding-left: 50px;
     overflow: hidden;
+}
+
+.inputDropdown {
+    border: none;
+    width: 100%;
+    color: #ffffff;
+    position: relative;
+    transition: 50ms ease-in-out;
 }
 
 .grey-background {
@@ -292,6 +353,7 @@ p {
     }
     ul li {
         font-size: 0.85em;
+
     }
     p{
     font-size:0.85em;
@@ -332,5 +394,4 @@ p {
     }
 
 }
-
 
