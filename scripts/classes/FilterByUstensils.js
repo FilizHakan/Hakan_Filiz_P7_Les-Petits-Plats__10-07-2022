@@ -4,8 +4,6 @@ export default class FilterByUstensils extends Filter
     constructor(recipes)
     {
         super('ustensils', 'Ustensiles', 'salmon', recipes)
-
-
     }
 
     hydrate(recipes)
