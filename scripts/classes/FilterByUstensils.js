@@ -16,4 +16,16 @@ export default class FilterByUstensils extends Filter
                 });
         });
     }
+
+    filterRecipe()
+    {
+        this.recipesfiltered = this.recipes.filter( recipe => 
+        {
+            if (recipe.ustensils === this.selection[0]) 
+            {
+                return true;
+            }
+            return false;
+        }); 
+    }
 }

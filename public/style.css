@@ -91,6 +91,23 @@ form {
     margin-bottom: 0;
 }
 
+.tagsArea {
+    margin-left: 2.75em;
+    margin-right: 2.75em;
+}
+
+.tag__item {
+    color: white;
+    margin-right: 1em;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    padding: 0.5em 1em 0.5em 0.8em;
+}
+
+.tag__item i {
+    padding-left: 0.5em;
+}
+
 #listingredients,
 #listappareils,
 #listustensils {
@@ -110,7 +127,14 @@ form {
     position: relative;
     transition: 50ms ease-in-out;
 }
-
+.hidden {
+    display: none !important;
+}
+.bi-x-circle {
+    cursor: pointer;
+    position: relative;
+    left: 0.5em;
+}
 .grey-background {
     background-color: #C7BEBE;
     width: 100%;

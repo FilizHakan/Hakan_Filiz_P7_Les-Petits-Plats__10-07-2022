@@ -97,7 +97,6 @@ export default class Recipe
     } else {
 
       let descriptionCard = this._description.match(new RegExp("^([:a-zA-ZÀ-ž0-9\\^\\(\\)\\?\\!\\+\\*,\\.\\'\"/°]{0,}[\\s\\.]){0,40}"));
-      console.log(this._description[i]);
       
       return descriptionCard[i].concat("..."); // Add ellipsis at the end of the text description
     }

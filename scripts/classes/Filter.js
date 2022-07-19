@@ -9,40 +9,53 @@ export default class Filter
         this.color = color;
         this.all = new Set();
         this.recipes = recipes;
+        this.recipesFiltered = recipes;
 
-        // Filters
-        this.filterInIngredients = [];
-        this.filterInAppliances = [];
-        this.filterInUstensils = [];
+        this.dom = {
+            list: null,
+            input: null,
+            open: null,
+            close: null,
+        }
+        this.selection = [];
     }
 
     // Display lists (tags for each dropdown)
     display()
     {
         let html=''
-        this.all.forEach(item =>
+        this.all.forEach( item =>
             {
-                html += `<span class="list-group-item ${this.color}-background col-4 col-sm-6 col-lg-6 display-inline ${this.ref}__item" tabindex="0">` + item + `</span>`
+                html += `
+                <span 
+                    class="list-group-item ${this.color}-background col-4 col-sm-6 col-lg-6 display-inline ${this.ref}__item" 
+                    tabindex="0"
+                    data-id="${item}"
+                > ${item} 
+                </span>`
             });
 
-            document.querySelector(`div[data-id="${this.ref}"] .options`).innerHTML = html;
+            this.dom.list.innerHTML = html;
     }
 
-    start()
+    filter(needle)
     {
-        const dropdown = new Dropdown(this.ref, this.placeholder, this.color);
-        document.querySelector(`.dropDownMenusArea`).appendChild(dropdown.createDropdown());
-        this.closeDropdown();
-        this.listenForOpeningDropdown();
-        this.listenForClosingDropdown();
-        this.hydrate(this.recipes);
-        this.display();
-        console.log(this.all);
+
+        this.all.forEach(item => 
+        {
+            const el = this.dom.list.querySelector(`[data-id="${item}"]`);
+            if (item.indexOf(needle) == -1)
+            {
+                el.classList.add('hidden');
+            } else {
+                el.classList.remove('hidden');
+            }
+        });
     }
 
     listenForClosingDropdown()
     {
-        document.querySelector(`div[data-id="${this.ref}"] .arrowClose`).addEventListener('click', () =>
+        this.dom.close.addEventListener('click', () =>
         {
             this.closeDropdown();
         });
@@ -51,7 +64,7 @@ export default class Filter
     listenForOpeningDropdown()
     {
         
-        document.querySelector(`div[data-id="${this.ref}"] .arrowOpen`).addEventListener('click', () =>
+        this.dom.open.addEventListener('click', () =>
         {
             this.openDropdown();
         });
@@ -59,24 +72,74 @@ export default class Filter
 
     openDropdown()
     {
-        document.querySelector(`div[data-id="${this.ref}"] .options`).style.display = 'block';
-        document.querySelector(`.dropDown--${this.ref}`).style.width = "239%";
-        document.querySelector(`div[data-id="${this.ref}"] .arrowOpen`).style.display = 'none';
-        document.querySelector(`div[data-id="${this.ref}"] .arrowClose`).style.display = 'block';
+        this.dom.list.style.display = 'block';
+        this.dom.open.style.display = 'none';
+        this.dom.close.style.display = 'block';
     }
 
     closeDropdown()
     {
-        document.querySelector(`div[data-id="${this.ref}"] .options`).style.display = 'none';
-        document.querySelector(`.dropDown--${this.ref}`).style.width = "100%";
-        document.querySelector(`div[data-id="${this.ref}"] .arrowClose`).style.display = 'none';
-        document.querySelector(`div[data-id="${this.ref}"] .arrowOpen`).style.display = 'block';
+        this.dom.list.style.display = 'none';
+        this.dom.close.style.display = 'none';
+        this.dom.open.style.display = 'block';
     }
 
     // Function to get ingredients, appareils and ustensils
 
-    getFilterElements()
+    listenForFiltering()
     {
-        
+        this.dom.input.addEventListener('input', e => 
+        {
+            const needle = e.target.value;
+            this.filter(needle);
+        })
+    }
+    // Listen to all tags when click on it
+    listenForSelection()
+    {
+        this.dom.list.querySelectorAll('.list-group-item').forEach( tag =>
+            {
+                tag.addEventListener('click', () =>
+                {
+                    const value = tag.dataset.id;
+                    this.selection.push(value);
+                    this.displaySelection();
+                    this.filterRecipe();
+                })
+            });
+    }
+
+    displaySelection()
+    {
+        document.querySelector('.tagsArea').innerHTML = '';
+        this.selection.forEach( tag => 
+        {
+            document.querySelector('.tagsArea').innerHTML += `
+            <div class="tag__item display-inline ${this.color}-background">
+                <span 
+                    class="tag"
+                >${tag}
+                </span>
+                <i class="bi bi-x-circle"></i> 
+            </div>`
+        }
+            )
+    }
+
+    start()
+    {
+        const dropdown = new Dropdown(this.ref, this.placeholder, this.color);
+        document.querySelector(`.dropDownMenusArea`).appendChild(dropdown.createDropdown());
+        this.dom.list = document.querySelector(`div[data-id="${this.ref}"] .options`);
+        this.dom.open = document.querySelector(`div[data-id="${this.ref}"] .arrowOpen`);
+        this.dom.close = document.querySelector(`div[data-id="${this.ref}"] .arrowClose`);
+        this.dom.input = document.querySelector(`div[data-id="${this.ref}"] .inputDropDown`);
+        this.closeDropdown();
+        this.listenForOpeningDropdown();
+        this.listenForClosingDropdown();
+        this.hydrate(this.recipes);
+        this.display();
+        this.listenForFiltering();
+        this.listenForSelection();
     }
 }
