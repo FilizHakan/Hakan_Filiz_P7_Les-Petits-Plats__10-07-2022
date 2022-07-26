@@ -11,17 +11,18 @@ export default class Dropdown
     createDropdown()
     {
         const container = document.createElement('div');
-        container.setAttribute('class', 'col-lg-2 col-sm-4');
+        container.setAttribute('class', 'mt-2 col-12 col-md-6 col-xl-3 col-xl-2');
+        container.setAttribute('id', `${this.ref}`)
 
         const dropdown =`
         <div data-id="${this.ref}" tabindex="0" id="div${this.ref}" class="divList">
             <form class="${this.ref} dropDown dropDown--${this.ref}" role="button" aria-haspopup="listbox" aria-expanded>
                 <label for="${this.ref}"></label>
-                <input type="text" class="${this.color}-background inputDropDown" autocomplete="off" value="" placeholder="${this.placeholder}">
+                <input type="text" class="${this.color}-background w-100 p-4 search__${this.ref} closed inputDropDown" placeholder="${this.placeholder}">
                 <i class="bi bi-chevron-down arrowOpen"></i>
                 <i class="bi bi-chevron-up arrowClose displayNone"></i>
             </form>
-            <div id="list${this.ref}" class="options list col-sm-12" role="listbox"></div>
+            <ul class="options list pl-4 ${this.color}-background ${this.ref}__results d-flex invisible" role="listbox"></ul>
         `;
         container.innerHTML = dropdown;
 

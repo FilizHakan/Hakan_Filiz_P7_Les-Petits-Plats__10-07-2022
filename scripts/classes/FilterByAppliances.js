@@ -14,4 +14,16 @@ export default class FilterByAppliances extends Filter
         });
     }
 
+    filterRecipe()
+    {
+        this.recipesFiltered = this.recipes.filter( recipe => 
+        {
+            if (recipe.appliance === this.selection[0]) 
+            {
+                return true;
+            }
+            return false;
+        }); 
+    }
+
 }

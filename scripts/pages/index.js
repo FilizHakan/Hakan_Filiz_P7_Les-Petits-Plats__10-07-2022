@@ -7,7 +7,7 @@ import FilterByUstensils from '../classes/FilterByUstensils.js';
 import Recipe from "../models/Recipe.js";
 import RecipeCards from '../views/RecipeCards.js';
 
-function displayRecipeCards(recipes) {
+export function displayRecipeCards(recipes) {
     const recipeSection = document.querySelector(".recipeArea");
   
     recipes.forEach( (data) => {

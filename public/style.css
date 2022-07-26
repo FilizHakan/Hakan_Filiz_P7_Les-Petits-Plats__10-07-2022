@@ -7,6 +7,9 @@
 input:focus-visible {
     outline: none;
 }
+.displayNone {
+    display: none;
+}
 
 header img {
     width: 280px;
@@ -39,56 +42,31 @@ p {
     line-height: 5;
 }
 
-.dropDownMenusArea {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 .ingredient-item {
     font-weight: 600;
-}
-
-.list-group-item {
-    border-top-width: 0;
-    color: white;
-    border: none;
-    margin: 0;
 }
 
 .display-inline {
     display: inline-block;
 }
 
-.ustensils__item:hover {
-    background-color: #f0513f;
+.salmon-background li:hover {
+    background-color: #f38f84;
     cursor: pointer;
 }
 
-.ingredients__item:hover {
-    background-color: #0667fa;
+.blue-background li:hover {
+    background-color: #64a0f9;
     cursor: pointer;
 }
 
-.appareils__item:hover {
-    background-color: #18db80;
+.green-background li:hover {
+    background-color: #85dcb3;
     cursor: pointer;
 }
 
 form {
     position: relative;
-}
-
-.list {
-    display: block;
-    border-radius: 0;
-    width: 35%;
-}
-
-.options {
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
 }
 
 .tagsArea {
@@ -102,16 +80,15 @@ form {
     border-radius: 5px;
     margin-top: 0.5em;
     padding: 0.5em 1em 0.5em 0.8em;
+    -webkit-animation: pop-tag .3s ease-in-out forwards;
+            animation: pop-tag .3s ease-in-out forwards;
 }
 
 .tag__item i {
     padding-left: 0.5em;
 }
-
-#listingredients,
-#listappareils,
-#listustensils {
-    position: absolute;
+.cardRecipes {
+    padding-top: 5rem!important;
 }
 
 .cardResume {
@@ -119,13 +96,112 @@ form {
     padding-left: 50px;
     overflow: hidden;
 }
-
-.inputDropdown {
-    border: none;
+.ingredients__results,
+.appareils__results,
+.ustensils__results{
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    color: white;
+    padding-top: 0;
+    padding-bottom: 0;
+    flex-wrap: wrap;
+    margin-top: -5px;
+    z-index: 1;
+    max-height: 350px;
+    overflow: scroll;
+    scroll-margin: 0;
+    cursor: pointer;
+}
+.opened::-webkit-input-placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+.opened::-moz-placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+.opened:-ms-input-placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+.opened::-ms-input-placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+.opened::placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+.closed::-webkit-input-placeholder {
+    color: white;
+    opacity: 1;
+}
+.closed::-moz-placeholder {
+    color: white;
+    opacity: 1;
+}
+.closed:-ms-input-placeholder {
+    color: white;
+    opacity: 1;
+}
+.closed::-ms-input-placeholder {
+    color: white;
+    opacity: 1;
+}
+.closed::-webkit-input-placeholder {
+    color: white;
+    opacity: 1;
+}
+.closed::-moz-placeholder {
+    color: white;
+    opacity: 1;
+}
+.closed:-ms-input-placeholder {
+    color: white;
+    opacity: 1;
+}
+.closed::-ms-input-placeholder {
+    color: white;
+    opacity: 1;
+}
+.closed::placeholder {
+    color: white;
+    opacity: 1;
+}
+.col-xl-2, .col-xl-3, .col-xl-4 {
+    transition: all 400ms ease;
+}
+.ingredients__results li,
+.appareils__results li,
+.ustensils__results li {
+    margin: 5px 0;
+    flex: 30%;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 24px;
+}
+.dropDownMenusArea {
+    position: absolute;
     width: 100%;
-    color: #ffffff;
-    position: relative;
-    transition: 50ms ease-in-out;
+}
+.invisible {
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.list {
+    padding-left: 12px;
+    line-height: 21.6px;
 }
 .hidden {
     display: none !important;
@@ -141,11 +217,9 @@ form {
     height: 178px;
     border-radius: 8px 8px 0 0;
 }
-
 .content {
     border-radius: 0px 0px 8px 8px;
 }
-
 .recipe {
     background-color: #E7E7E7;
     transition: 190ms ease-in-out;
@@ -155,18 +229,14 @@ form {
     border-radius: 8px;
     box-shadow: 2px 2px 10px 7px #b0b0b05d;
 }
-
 .recipe:hover {
     box-shadow: 2px 2px 10px 7px #7b7b7b5d;
 
 }
-
-
 .row {
     margin-right: 30px;
     margin-left: 30px;
 }
-
 .flex {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
@@ -218,10 +288,6 @@ form {
     right:2%;
 }
 
-.search, .ingredients , .ustensils , .appareils {
-    position: relative;
-}
-
 .ingredients i, .ustensils i, .appareils i {
     position: absolute;
     top:55%;
@@ -236,76 +302,17 @@ form {
     color: white;
     border-radius: 8px;
     border: none;
-    height: 50px;
+    height: 60px;
     padding: 20px;
     width: 100%;
 }
-
-.search input:focus:active{
-    outline:none;
-    box-shadow: inset 2px 2px 5px #b0b0b05d;
+.closed {
+    transition: opacity .3s ease-in-out,
+    flex .3s ease-in-out;
 }
-
-.displayNone
-{
-    display: none;
+.closed:hover {
+    opacity: .75;
 }
-
-.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appareils ::-webkit-input-placeholder {
-    color: white;
-}
-
-.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appareils ::-moz-placeholder {
-    color: white;
-}
-
-.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appareils :-ms-input-placeholder {
-    color: white;
-}
-
-.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appareils ::-ms-input-placeholder {
-    color: white;
-}
-
-.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appareils ::-webkit-input-placeholder {
-    color: white;
-}
-
-.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appareils ::-moz-placeholder {
-    color: white;
-}
-
-.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appareils :-ms-input-placeholder {
-    color: white;
-}
-
-.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appareils ::-ms-input-placeholder {
-    color: white;
-}
-
-.ingredients ::-webkit-input-placeholder, .ustensils ::-webkit-input-placeholder, .appareils ::-webkit-input-placeholder {
-    color: white;
-}
-
-.ingredients ::-moz-placeholder, .ustensils ::-moz-placeholder, .appareils ::-moz-placeholder {
-    color: white;
-}
-
-.ingredients :-ms-input-placeholder, .ustensils :-ms-input-placeholder, .appareils :-ms-input-placeholder {
-    color: white;
-}
-
-.ingredients ::-ms-input-placeholder, .ustensils ::-ms-input-placeholder, .appareils ::-ms-input-placeholder {
-    color: white;
-}
-
-.ingredients ::placeholder, 
-.ustensils ::placeholder,
-.appareils ::placeholder {
-    color: white;
-}
-
-
 
 @media (max-width:1200px){
     .recipe{
@@ -368,16 +375,13 @@ form {
     }
     ul li {
         font-size: 0.85em;
-
     }
     p{
     font-size:0.85em;
     }
-
     .search button {
         font-size: 12.5px;
     }
-
     .search ::-webkit-input-placeholder {
         font-size: 13px;
         overflow: hidden;
