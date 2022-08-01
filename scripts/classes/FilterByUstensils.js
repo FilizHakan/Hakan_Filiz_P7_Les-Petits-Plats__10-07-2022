@@ -12,8 +12,29 @@ export default class FilterByUstensils extends Filter
         {
             recipe.ustensils.forEach(item =>
                 {
-                    this.all.add(item); // Method add. is part of new Set()
+                    this.all.add(item.toLowerCase()); // Method add. is part of new Set()
                 });
         });
+    }
+
+    filterRecipes(recipes)
+    {
+        return recipes.filter( recipe => 
+        {
+            let count = 0;
+            this.selection.forEach( item =>
+                {
+                    if (recipe.ustensils.includes(item)) 
+                    {
+                        count ++;
+                    }       
+                });
+                if (count == this.selection.length) 
+                {
+                    return true;
+                }
+                return false;
+        }); 
+        console.log(this.recipesFiltered)
     }
 }

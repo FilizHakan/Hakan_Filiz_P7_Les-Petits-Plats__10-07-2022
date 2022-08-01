@@ -10,20 +10,19 @@ export default class FilterByAppliances extends Filter
     {
         recipes.forEach(recipe =>
         {
-            this.all.add(recipe.appliance); // Method add. is part of new Set()      
+            this.all.add(recipe.appliance.toLowerCase()); // Method add. is part of new Set()      
         });
     }
 
-    filterRecipe()
+    filterRecipes(recipes)
     {
-        this.recipesFiltered = this.recipes.filter( recipe => 
+        this.recipesFiltered = recipes.filter( recipe => 
         {
             if (recipe.appliance === this.selection[0]) 
             {
-                return true;
+                return true; 
             }
             return false;
         }); 
     }
-
 }

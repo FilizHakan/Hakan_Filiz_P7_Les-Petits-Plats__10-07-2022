@@ -1,5 +1,5 @@
 import Dropdown from "../views/Dropdown.js";
-
+import { displayRecipeCards } from "../pages/index.js";
 export default class Filter 
 {
     constructor(ref, placeholder, color, recipes)
@@ -20,6 +20,7 @@ export default class Filter
 
         this.selection = [];
     }
+
     // Display lists (tags for each dropdown)
     display()
     {
@@ -27,24 +28,25 @@ export default class Filter
         this.all.forEach( item =>
             {
                 html += `
-                <li
+                <button
                     class="list"
                     tabindex="0"
                     data-id="${item}"
                 > ${item} 
-                </li>`
+                </button>`
             });
 
             this.dom.list.innerHTML = html;
     }
+
     // Display tags above drop down
     displaySelection()
     {
-        document.querySelector('.tagsArea').innerHTML = '';
+        document.querySelector(`.tagsArea`).innerHTML = `<div class="tag-${this.ref}"></div>`;
         this.selection.forEach( tag => 
         {
-            document.querySelector('.tagsArea').innerHTML += `
-            <div class="tag__item display-inline ${this.color}-background">
+            document.querySelector(`.tag-${this.ref}`).innerHTML += `
+            <div class="tag__item display-inline ${this.color}-background" data-id="${tag}">
                 <span 
                     class="tag"
                 >${tag}
@@ -53,6 +55,7 @@ export default class Filter
             </div>`
         });
     }
+
     closeDropdown()
     {
         this.dom.list.style.display = 'none';
@@ -67,6 +70,7 @@ export default class Filter
         if (`${this.ref}` == "appareils") this.dom.input.setAttribute("placeholder", "Appareils");
         if (`${this.ref}` == "ustensils") this.dom.input.setAttribute("placeholder", "Ustensiles");
     }
+
     filter(needle)
     {
         this.all.forEach(item => 
@@ -80,6 +84,7 @@ export default class Filter
             }
         });
     }
+
     listenForClosingDropdown()
     {
         this.dom.close.addEventListener('click', () =>
@@ -87,6 +92,7 @@ export default class Filter
             this.closeDropdown();
         });
     }
+
     listenForOpeningDropdown()
     {
         
@@ -95,6 +101,7 @@ export default class Filter
             this.openDropdown();
         });
     }
+    
     // Function to get ingredients, appareils and ustensils tags
     listenForFiltering()
     {
@@ -104,45 +111,60 @@ export default class Filter
             this.filter(needle);
         })
     }
+
     // Listen to all tags when click on it
     listenForSelection()
     {
         this.dom.list.querySelectorAll('.list').forEach( tag =>
-            {
-                tag.addEventListener('click', () =>
-                {
-                    const value = tag.dataset.id;
-                    this.selection.push(value);
-                    this.displaySelection();
-               })
-            });
-
-    }
-    listenForClosingSelection()
-    {
-        // For each cross on the tag
-        document.querySelectorAll(`.closeTag`).forEach( cross =>
-            {
-                cross.addEventListener('click', (e) =>
-                {
-                    e.preventDefault();
-                    
-                    document.querySelector('.tagsArea').style.display = 'none';
-            });
-              
-        });
-    }
-    //Remove tag from the selected drop down
-    removeSelectedTagOnList(target)
-    {
-        this.selection = this.selection.filter(item => !(item.value === target.innerHTML && item.category === target.dataset.category))
-
-        if (this.selection.length === 0) 
         {
-        document.querySelector('.tagsArea').remove();
-        }
-        target.remove();
+            tag.addEventListener('click', () =>
+            {
+                tag.disabled = true;
+                const value = tag.dataset.id;
+                this.selection.push(value);
+                this.displaySelection();
+                const filtered = this.filterRecipes(this.recipes);
+                displayRecipeCards(filtered);
+                this.all = new Set();
+                this.hydrate(filtered);
+                this.display();
+                this.disableSelectedItems();
+                this.listenForSelection();
+                this.listenForUnselect();
+            })
+        });
+
     }
+
+    listenForUnselect()
+    {
+        this.selection.forEach( item =>
+            {
+                document.querySelector(`.tag-${this.ref} .tag__item[data-id="${item}"] .closeTag`).addEventListener( "click", (e) =>
+                    {
+                        e.preventDefault();
+                        // Enlever de la selection l'item sur lequel on a clique
+                        this.displaySelection();
+                        const filtered = this.filterRecipes(this.recipes);
+                        displayRecipeCards(filtered);
+                        this.all = new Set();
+                        this.hydrate(filtered);
+                        this.display();
+                        tag.disabled = false;
+                        this.listenForSelection();
+                        this.listenForUnselect();  
+                    });             
+            });
+    }
+
+    disableSelectedItems()
+    {
+        this.selection.forEach( item =>
+            {
+                this.dom.list.querySelector(`[data-id="${item}"]`).disabled = true;
+            })
+    }
+
     openDropdown()
     {
         this.dom.list.style.display = 'block';
@@ -157,13 +179,15 @@ export default class Filter
         if (`${this.ref}` == "appareils") this.dom.input.setAttribute("placeholder", "Rechercher un appareil");
         if (`${this.ref}` == "ustensils") this.dom.input.setAttribute("placeholder", "Rechercher un ustensile");
     }
+
     createNoResultHTML () {
-        const noResult = document.createElement('li')
+        const noResult = document.createElement('button')
         noResult.classList.add('filter__result', 'no-result', 'm-0', 'p-3', 'pt-0', 'text-white', 'fs-6')
         noResult.innerHTML = 'Aucun résultat'
     
         return noResult
     }
+
     start()
     {
         const dropdown = new Dropdown(this.ref, this.placeholder, this.color);
@@ -179,7 +203,6 @@ export default class Filter
         this.display();
         this.listenForFiltering();
         this.listenForSelection();
-        this.listenForClosingSelection();
     }
     
 }

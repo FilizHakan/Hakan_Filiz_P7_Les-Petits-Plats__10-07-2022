@@ -13,7 +13,7 @@ export default class FilterByIngredients extends Filter
             {
                 recipe.ingredients.forEach(element =>
                     {
-                        this.all.add(element.ingredient); // Method add. is part of new Set()
+                        this.all.add(element.ingredient.toLowerCase()); // Method add. is part of new Set()
                     });
             });
     }

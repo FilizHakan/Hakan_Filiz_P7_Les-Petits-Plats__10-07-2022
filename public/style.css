@@ -50,17 +50,17 @@ p {
     display: inline-block;
 }
 
-.salmon-background li:hover {
+.salmon-background button:hover {
     background-color: #f38f84;
     cursor: pointer;
 }
 
-.blue-background li:hover {
+.blue-background button:hover {
     background-color: #64a0f9;
     cursor: pointer;
 }
 
-.green-background li:hover {
+.green-background button:hover {
     background-color: #85dcb3;
     cursor: pointer;
 }
@@ -173,15 +173,20 @@ form {
 .col-xl-2, .col-xl-3, .col-xl-4 {
     transition: all 400ms ease;
 }
-.ingredients__results li,
-.appareils__results li,
-.ustensils__results li {
-    margin: 5px 0;
+.ingredients__results button,
+.appareils__results button,
+.ustensils__results button {
+    margin: 5px;
+    padding-left: 18px;
     flex: 30%;
+    text-align: left;
     cursor: pointer;
     text-overflow: ellipsis;
     overflow: hidden;
     max-height: 24px;
+    border: none;
+    background-color: transparent;
+    color: white;
 }
 .dropDownMenusArea {
     position: absolute;
@@ -196,11 +201,59 @@ form {
     position: absolute;
     width: 1px;
 }
-::-webkit-scrollbar {
-    display: none;
+button:disabled {
+    text-decoration: line-through;
+    color: white;
 }
+/* width */
+.ustensils__results::-webkit-scrollbar {
+    width: 12px;
+}
+
+.appareils__results::-webkit-scrollbar {
+    width: 12px;
+}
+
+.ingredients__results::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+  /* Track */
+.ustensils__results::-webkit-scrollbar-track {
+    background: #ED6454; 
+}
+
+.appareils__results::-webkit-scrollbar-track {
+    background: #68D9A4; 
+}
+
+.ingredients__results::-webkit-scrollbar-track {
+    background: #3282F7; 
+}
+
+/* Handle */
+.ustensils__results::-webkit-scrollbar-thumb {
+    background: #ED6454; 
+}
+.appareils__results::-webkit-scrollbar-thumb {
+    background: #68D9A4; 
+}
+.ingredients__results::-webkit-scrollbar-thumb {
+    background: #3282F7; 
+}
+/* Handle on hover */
+.ustensils__results::-webkit-scrollbar-thumb:hover {
+    background: #ED6454; 
+}
+.appareils__results::-webkit-scrollbar-thumb:hover {
+    background: #68D9A4; 
+}
+.ingredients__results::-webkit-scrollbar-thumb:hover {
+    background: #3282F7; 
+}
+
+
 .list {
-    padding-left: 12px;
     line-height: 21.6px;
 }
 .hidden {
@@ -373,7 +426,7 @@ form {
     h1, h2 {
         font-size: 1.2em;
     }
-    ul li {
+    div button {
         font-size: 0.85em;
     }
     p{

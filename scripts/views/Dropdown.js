@@ -22,7 +22,7 @@ export default class Dropdown
                 <i class="bi bi-chevron-down arrowOpen"></i>
                 <i class="bi bi-chevron-up arrowClose displayNone"></i>
             </form>
-            <ul class="options list pl-4 ${this.color}-background ${this.ref}__results d-flex invisible" role="listbox"></ul>
+            <div class="options list pl-4 ${this.color}-background ${this.ref}__results d-flex invisible" role="listbox"></div>
         `;
         container.innerHTML = dropdown;
 
