@@ -139,22 +139,21 @@ export default class Filter
     listenForUnselect()
     {
         this.selection.forEach( item =>
+        {
+            document.querySelector(`.tag-${this.ref} .tag__item[data-id="${item}"] .closeTag`).addEventListener( "click", (e) =>
             {
-                document.querySelector(`.tag-${this.ref} .tag__item[data-id="${item}"] .closeTag`).addEventListener( "click", (e) =>
-                    {
-                        e.preventDefault();
-                        // Enlever de la selection l'item sur lequel on a clique
-                        this.displaySelection();
-                        const filtered = this.filterRecipes(this.recipes);
-                        displayRecipeCards(filtered);
-                        this.all = new Set();
-                        this.hydrate(filtered);
-                        this.display();
-                        tag.disabled = false;
-                        this.listenForSelection();
-                        this.listenForUnselect();  
-                    });             
-            });
+                e.preventDefault();
+                const index = this.selection.findIndex(a => a == item);
+                this.selection.splice(index, 1);
+                this.displaySelection();
+                const filtered = this.filterRecipes(this.recipes);
+                displayRecipeCards(filtered);
+                this.hydrate(filtered);
+                this.display();
+                this.listenForSelection();
+                this.listenForUnselect();  
+            });             
+        });
     }
 
     disableSelectedItems()

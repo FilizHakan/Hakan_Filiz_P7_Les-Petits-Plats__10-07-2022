@@ -10,6 +10,7 @@ import RecipeCards from '../views/RecipeCards.js';
 export function displayRecipeCards(recipes) {
     const recipeSection = document.querySelector(".recipeArea");
     recipeSection.innerHTML = '';
+
     recipes.forEach( (data) => {
       const recipe = new Recipe(data);
       const template = new RecipeCards(recipe);
@@ -25,11 +26,11 @@ function init() {
 
 init();
 
-/*const filterIngredients =  new FilterByIngredients(recipes);
-filterIngredients.start();
+//const filterIngredients =  new FilterByIngredients(recipes);
+//filterIngredients.start();
 
-const filterAppliances =  new FilterByAppliances(recipes);
-filterAppliances.start();*/
+//const filterAppliances =  new FilterByAppliances(recipes);
+//filterAppliances.start();
 
 const filterUstensils = new FilterByUstensils(recipes)
 filterUstensils.start();

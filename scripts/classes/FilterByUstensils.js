@@ -35,6 +35,5 @@ export default class FilterByUstensils extends Filter
                 }
                 return false;
         }); 
-        console.log(this.recipesFiltered)
     }
 }
