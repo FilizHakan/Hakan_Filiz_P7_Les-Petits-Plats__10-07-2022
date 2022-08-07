@@ -19,21 +19,26 @@ export default class FilterByUstensils extends Filter
 
     filterRecipes(recipes)
     {
+        if (this.selection.length === 0)
+        {
+            return recipes;
+        }
+        
         return recipes.filter( recipe => 
         {
             let count = 0;
             this.selection.forEach( item =>
+            {
+                if (recipe.ustensils.includes(item)) 
                 {
-                    if (recipe.ustensils.includes(item)) 
-                    {
-                        count ++;
-                    }       
-                });
+                    count ++;
+                }       
+            });
                 if (count == this.selection.length) 
                 {
                     return true;
                 }
-                return false;
+            return false;
         }); 
     }
 }

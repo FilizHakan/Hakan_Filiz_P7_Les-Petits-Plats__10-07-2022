@@ -16,13 +16,15 @@ export default class FilterByAppliances extends Filter
 
     filterRecipes(recipes)
     {
-        this.recipesFiltered = recipes.filter( recipe => 
+        if (this.selection.length === 0)
         {
-            if (recipe.appliance === this.selection[0]) 
-            {
-                return true; 
-            }
-            return false;
+            return recipes;
+        }
+        
+        return recipes.filter( recipe => 
+        {
+            const selection = this.selection.map(a => a.toLowerCase());
+            return (selection.includes(recipe.appliance.toLowerCase()));
         }); 
     }
 }

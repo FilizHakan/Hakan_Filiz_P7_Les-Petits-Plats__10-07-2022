@@ -1,7 +1,7 @@
 import {recipes} from '../../data/recipes.js';
 
-//import FilterByAppliances from '../classes/FilterByAppliances.js';
-//import FilterByIngredients from '../classes/FilterByIngredients.js';
+import FilterByAppliances from '../classes/FilterByAppliances.js';
+import FilterByIngredients from '../classes/FilterByIngredients.js';
 import FilterByUstensils from '../classes/FilterByUstensils.js';
 
 import Recipe from "../models/Recipe.js";
@@ -16,7 +16,7 @@ export function displayRecipeCards(recipes) {
       const template = new RecipeCards(recipe);
       recipeSection.appendChild(template.renderCards());
     });
-  }
+}
   
 // Init homepage
 function init() {
@@ -26,11 +26,11 @@ function init() {
 
 init();
 
-//const filterIngredients =  new FilterByIngredients(recipes);
-//filterIngredients.start();
+const filterIngredients =  new FilterByIngredients(recipes);
+filterIngredients.start();
 
-//const filterAppliances =  new FilterByAppliances(recipes);
-//filterAppliances.start();
+const filterAppliances =  new FilterByAppliances(recipes);
+filterAppliances.start();
 
 const filterUstensils = new FilterByUstensils(recipes)
 filterUstensils.start();

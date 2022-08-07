@@ -42,7 +42,8 @@ export default class Filter
     // Display tags above drop down
     displaySelection()
     {
-        document.querySelector(`.tagsArea`).innerHTML = `<div class="tag-${this.ref}"></div>`;
+        document.querySelector(`.tag-${this.ref}`).innerHTML = '';
+
         this.selection.forEach( tag => 
         {
             document.querySelector(`.tag-${this.ref}`).innerHTML += `
@@ -146,7 +147,7 @@ export default class Filter
                 const index = this.selection.findIndex(a => a == item);
                 this.selection.splice(index, 1);
                 this.displaySelection();
-                const filtered = this.filterRecipes(this.recipes);
+                const filtered = this.filterRecipes(this.recipes); 
                 displayRecipeCards(filtered);
                 this.hydrate(filtered);
                 this.display();
@@ -195,6 +196,7 @@ export default class Filter
         this.dom.open = document.querySelector(`div[data-id="${this.ref}"] .arrowOpen`);
         this.dom.close = document.querySelector(`div[data-id="${this.ref}"] .arrowClose`);
         this.dom.input = document.querySelector(`div[data-id="${this.ref}"] .inputDropDown`);
+        document.querySelector(`.tagsArea`).innerHTML += `<div class="tag-${this.ref}"></div>`;
         this.closeDropdown();
         this.listenForOpeningDropdown();
         this.listenForClosingDropdown();
