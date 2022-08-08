@@ -21,7 +21,7 @@ export default class Filter
         this.selection = [];
     }
 
-    // Display lists (tags for each dropdown)
+    // Display lists for each dropdown
     display()
     {
         let html=''
@@ -162,6 +162,7 @@ export default class Filter
         this.selection.forEach( item =>
             {
                 this.dom.list.querySelector(`[data-id="${item}"]`).disabled = true;
+                console.log(this.selection)
             })
     }
 

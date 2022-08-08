@@ -11,7 +11,7 @@ export default class Dropdown
     createDropdown()
     {
         const container = document.createElement('div');
-        container.setAttribute('class', 'mt-2 col-12 col-md-6 col-xl-3 col-xl-2');
+        container.setAttribute('class', 'mt-2 col-12 col-sm-4 col-xl-3 col-xl-2');
         container.setAttribute('id', `${this.ref}`)
 
         const dropdown =`

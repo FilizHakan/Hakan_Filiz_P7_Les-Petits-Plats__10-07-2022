@@ -29,10 +29,11 @@ export default class FilterByIngredients extends Filter
         return recipes.filter( recipe => 
         {
             const selection = recipe.ingredients.map(b => b.ingredient.toLowerCase());
+            
             return (
                 recipe.name.toLowerCase().includes(this.selection) || 
                 recipe.description.toLowerCase().includes(this.selection) || 
-                selection.join().includes(this.selection)
+                selection.join().includes(this.selection) 
             );
         }); 
         console.log(selection)

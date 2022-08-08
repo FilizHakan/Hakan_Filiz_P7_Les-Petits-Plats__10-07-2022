@@ -188,10 +188,12 @@ form {
     background-color: transparent;
     color: white;
 }
+
 .dropDownMenusArea {
     position: absolute;
     width: 100%;
 }
+
 .invisible {
     clip: rect(0 0 0 0);
     height: 1px;
@@ -320,6 +322,10 @@ button:disabled {
     h1, h2 {
         font-size: 0.9em;
     }
+    .dropDownMenusArea {
+        position: absolute;
+        width: 94%;
+    }
 }
 
 .search input{
@@ -402,10 +408,14 @@ button:disabled {
     .recipe{
         height: 550px;
     }
+    .dropDownMenusArea {
+        position: absolute;
+        width: 92.55%;
+    }
 }
 
 
-@media (max-width:576px){
+@media (max-width:575px){
     .recipe{
         height: 500px;
     }
@@ -463,6 +473,13 @@ button:disabled {
         font-size: 13px;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    .dropDownMenusArea {
+        position: absolute;
+        width: 97.3%;
+    }
+    .cardRecipes {
+        padding-top: 17rem!important;
     }
 
 }
