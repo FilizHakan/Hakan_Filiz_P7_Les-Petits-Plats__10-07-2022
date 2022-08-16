@@ -27,9 +27,11 @@ export default class FilterByUstensils extends Filter
         return recipes.filter( recipe => 
         {
             let count = 0;
+            const ustensils = recipe.ustensils.map(us => us.toLowerCase());
+            
             this.selection.forEach( item =>
             {
-                if (recipe.ustensils.includes(item)) 
+                if (ustensils.includes(item.toLowerCase())) 
                 {
                     count ++;
                 }       

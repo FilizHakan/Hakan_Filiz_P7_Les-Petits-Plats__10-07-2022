@@ -34,7 +34,7 @@ export default class FilterByIngredients extends Filter
 
             ingredients.forEach(item =>
             {   
-                if (this.selection.includes(item))
+                if (this.selection.includes(item.toLowerCase()))
                 {
                     count++; // quantity of ingredients selected present in recipe
                 }

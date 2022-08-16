@@ -122,16 +122,8 @@ export default class Filter
                 tag.disabled = true;
                 const value = tag.dataset.id;
                 this.selection.push(value);
-                this.displaySelection();
                 this.list.filter();
-                //const filtered = this.filterRecipes(this.list.all);
-                //this.list.display(filtered);
-                //this.all = new Set();
-                //this.hydrate(filtered);
-                //this.display();
-                //this.disableSelectedItems();
-                //this.listenForSelection();
-                //this.listenForUnselect();
+
             })
         });
 
@@ -146,14 +138,8 @@ export default class Filter
                 e.preventDefault();
                 const index = this.selection.findIndex(a => a == item);
                 this.selection.splice(index, 1);
-                this.displaySelection();
                 this.list.filter();
-                //const filtered = this.filterRecipes(this.list.all); 
-                //this.list.display(filtered);
-                //this.hydrate(filtered);
-                //this.display();
-                //this.listenForSelection();
-                //this.listenForUnselect();  
+ 
             });             
         });
     }

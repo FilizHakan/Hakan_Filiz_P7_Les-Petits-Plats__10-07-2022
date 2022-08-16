@@ -9,7 +9,7 @@ export default class List {
         this.filters = [];
     }
 
-    addfilter(filter)
+    addFilter(filter)
     {
         filter.start();
         this.filters.push(filter);
@@ -29,23 +29,26 @@ export default class List {
 
     filter()
     {   
-        const filtered = [];
+        let filtered = this.all;
         
         this.filters.forEach(filter => 
             {
-                filtered = filter.filterRecipes(this.all);
+                filtered = filter.filterRecipes(filtered);
             });
 
             this.display(filtered);
-
             this.filters.forEach(filter =>
             {
                 filter.all = new Set();
                 filter.hydrate(filtered);
                 filter.display();
+                if (filtered.length > 0)
+                {
                 filter.disableSelectedItems();
                 filter.listenForSelection();
+                filter.displaySelection();
                 filter.listenForUnselect();
+                }
             })
 
             return filtered;
