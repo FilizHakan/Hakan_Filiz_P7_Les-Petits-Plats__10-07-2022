@@ -2,9 +2,9 @@ import Filter from "./Filter.js";
 
 export default class FilterByIngredients extends Filter
 {
-    constructor(recipes)
+    constructor(list)
     {
-        super('ingredients', 'Ingrédients', 'blue', recipes);
+        super('ingredients', 'Ingrédients', 'blue', list);
         
     }
 
@@ -25,17 +25,27 @@ export default class FilterByIngredients extends Filter
         {
             return recipes;
         }
-
+        
         return recipes.filter( recipe => 
         {
-            const selection = recipe.ingredients.map(b => b.ingredient.toLowerCase());
+            const ingredients = recipe.ingredients.map(b => b.ingredient.toLowerCase());
             
-            return (
-                recipe.name.toLowerCase().includes(this.selection) || 
-                recipe.description.toLowerCase().includes(this.selection) || 
-                selection.join().includes(this.selection) 
-            );
-        }); 
-        console.log(selection)
+            let count = 0;
+
+            ingredients.forEach(item =>
+            {   
+                if (this.selection.includes(item))
+                {
+                    count++; // quantity of ingredients selected present in recipe
+                }
+            });
+
+            if (count === this.selection.length) 
+            {
+                return true;
+            }
+
+            return false;
+        });       
     }
 }

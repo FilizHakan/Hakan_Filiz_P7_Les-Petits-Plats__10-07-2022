@@ -1,9 +1,9 @@
 import Filter from "./Filter.js";
 export default class FilterByUstensils extends Filter
 {
-    constructor(recipes)
+    constructor(list)
     {
-        super('ustensils', 'Ustensiles', 'salmon', recipes)
+        super('ustensils', 'Ustensiles', 'salmon', list)
     }
 
     hydrate(recipes)

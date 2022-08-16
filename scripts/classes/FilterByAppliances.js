@@ -1,9 +1,9 @@
 import Filter from "./Filter.js";
 export default class FilterByAppliances extends Filter
 {
-    constructor(recipes)
+    constructor(list)
     {
-        super('appareils', 'Appareils', 'green', recipes)
+        super('appareils', 'Appareils', 'green', list)
     }
 
     hydrate(recipes)

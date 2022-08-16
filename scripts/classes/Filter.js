@@ -1,15 +1,14 @@
 import Dropdown from "../views/Dropdown.js";
-import { displayRecipeCards } from "../pages/index.js";
+import List from "../classes/List.js";
 export default class Filter 
 {
-    constructor(ref, placeholder, color, recipes)
+    constructor(ref, placeholder, color, list)
     {
         this.ref= ref;
         this.placeholder = placeholder;
         this.color = color;
         this.all = new Set();
-        this.recipes = recipes;
-        this.recipesFiltered = recipes;
+        this.list = list;
 
         this.dom = {
             list: null,
@@ -124,14 +123,15 @@ export default class Filter
                 const value = tag.dataset.id;
                 this.selection.push(value);
                 this.displaySelection();
-                const filtered = this.filterRecipes(this.recipes);
-                displayRecipeCards(filtered);
-                this.all = new Set();
-                this.hydrate(filtered);
-                this.display();
-                this.disableSelectedItems();
-                this.listenForSelection();
-                this.listenForUnselect();
+                this.list.filter();
+                //const filtered = this.filterRecipes(this.list.all);
+                //this.list.display(filtered);
+                //this.all = new Set();
+                //this.hydrate(filtered);
+                //this.display();
+                //this.disableSelectedItems();
+                //this.listenForSelection();
+                //this.listenForUnselect();
             })
         });
 
@@ -147,12 +147,13 @@ export default class Filter
                 const index = this.selection.findIndex(a => a == item);
                 this.selection.splice(index, 1);
                 this.displaySelection();
-                const filtered = this.filterRecipes(this.recipes); 
-                displayRecipeCards(filtered);
-                this.hydrate(filtered);
-                this.display();
-                this.listenForSelection();
-                this.listenForUnselect();  
+                this.list.filter();
+                //const filtered = this.filterRecipes(this.list.all); 
+                //this.list.display(filtered);
+                //this.hydrate(filtered);
+                //this.display();
+                //this.listenForSelection();
+                //this.listenForUnselect();  
             });             
         });
     }
@@ -201,7 +202,7 @@ export default class Filter
         this.closeDropdown();
         this.listenForOpeningDropdown();
         this.listenForClosingDropdown();
-        this.hydrate(this.recipes);
+        this.hydrate(this.list.all);
         this.display();
         this.listenForFiltering();
         this.listenForSelection();
