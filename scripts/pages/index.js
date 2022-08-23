@@ -18,7 +18,7 @@ list.addFilter(filterIngredients);
 list.addFilter(filterAppliances);
 list.addFilter(filterUstensils);
 
-list.listenForSearch(recipes);
+list.listenForSearch();
 
 
 

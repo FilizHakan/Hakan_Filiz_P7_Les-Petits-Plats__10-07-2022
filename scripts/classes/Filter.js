@@ -122,11 +122,9 @@ export default class Filter
                 tag.disabled = true;
                 const value = tag.dataset.id;
                 this.selection.push(value);
-                this.list.filter();
-
+                this.list.filter(this.list.all);
             })
         });
-
     }
 
     listenForUnselect()
@@ -138,8 +136,7 @@ export default class Filter
                 e.preventDefault();
                 const index = this.selection.findIndex(a => a == item);
                 this.selection.splice(index, 1);
-                this.list.filter();
- 
+                this.list.filter(this.list.all);
             });             
         });
     }

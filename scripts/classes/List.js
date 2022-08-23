@@ -1,4 +1,5 @@
 import Recipe from "../models/Recipe.js";
+import { getFromQueryString } from "../tools/functions.js";
 import RecipeCards from '../views/RecipeCards.js';
 import Search from "./Search.js";
 export default class List {
@@ -7,6 +8,11 @@ export default class List {
     {
         this.all = recipes;
         this.filters = [];
+        this.dom = 
+        {
+            area: document.querySelector(".recipeArea")
+        }
+        this.algo = getFromQueryString('algo');
     }
 
     addFilter(filter)
@@ -16,118 +22,106 @@ export default class List {
     }
 
     clearRecipeCards() {
-        const recipesSection = document.querySelector(".recipeArea");
-        recipesSection.innerHTML = "";
+        this.dom.area.innerHTML = "";
     }
 
     display(recipes) 
     {
-        const recipeSection = document.querySelector(".recipeArea");
-        
-        if (recipes.length >= 1)
-        {
-            recipes.forEach( (data) => {
-                const recipe = new Recipe(data);
-                const template = new RecipeCards(recipe);
-                recipeSection.appendChild(template.renderCards());
-            });
+        this.clearRecipeCards();
 
-        } else {
-            this.clearRecipeCards();
+        if (recipes.length === 0)
+        {
             this.errorMessage('Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc,.');
-        
+            return;      
         }
-        
+
+        recipes.forEach( (data) => 
+        {
+            const recipe = new Recipe(data);
+            const template = new RecipeCards(recipe);
+            this.dom.area.appendChild(template.renderCards());
+        });
     }
 
     errorMessage(errorMessage) {
-        const recipesSection = document.querySelector(".recipeArea");
         const searchError = document.createElement("div");
 
         searchError.setAttribute("class", "searchError");
         searchError.innerHTML = errorMessage;
-        recipesSection.appendChild(searchError);
+        this.dom.area.appendChild(searchError);
     }
 
-    filter()
+    filter(recipes)
     {   
-        let filtered = this.all;
+        let filtered = recipes;
         
         this.filters.forEach(filter => 
             {
                 filtered = filter.filterRecipes(filtered);
             });
 
-            this.display(filtered);
-            this.filters.forEach(filter =>
+        this.display(filtered);
+        this.filters.forEach(filter =>
+        {
+            filter.all = new Set();
+            filter.hydrate(filtered);
+            filter.display();
+            if (filtered.length > 0)
             {
-                filter.all = new Set();
-                filter.hydrate(filtered);
-                filter.display();
-                if (filtered.length > 0)
-                {
                 filter.disableSelectedItems();
                 filter.listenForSelection();
                 filter.displaySelection();
                 filter.listenForUnselect();
-                }
-            })
+            }
+        })
 
-            return filtered;
+        return filtered;
         
     }
 
-    // Filter recipes according what people write in the search bar
-    listenForSearch(recipes)
+    // Filter recipes according what it's typed in the search bar engine
+    listenForSearch()
     {
         // Fetch elements in the index.html
         const searchForm = document.querySelector("#searchForm");
         const searchInput = document.querySelector("#searchInput");
 
-        // Search by submit (enter)
-        searchForm.addEventListener("submit", (e) =>
+        // Search by input
+        searchForm.addEventListener("input", (e) =>
         {
             e.preventDefault();
-            // Value entered in the search bar
-            const search = searchInput.value;
+            const needle = searchInput.value;
 
-            // Regex superior at 3 letters in the search bar
-            const regex = new RegExp("^[:a-zA-ZÀ-ž0-9\\^\\(\\)\\?\\!\\+\\*,\\.\\'\"/°\\s]{3,}$");
-
-            if (regex.test(search))
+            if (needle.length === 0)
             {
-                const recipeSearch = new Search(recipes, search);
-                const newRecipes = recipeSearch.searchSort();
-                this.display(newRecipes); // not sure about this line of code
-                return newRecipes;
+                this.display(this.all);
+                return;
+            }
 
-            } else {
+            if (needle.length > 0 && needle.length < 2)
+            {
                 this.clearRecipeCards();
-                this.errorMessage("Veuillez entrer au minimum 3 lettres pour votre recherche");
-                this.display(recipes);
+                this.errorMessage("Veuillez entrer au minimum 3 caractères pour votre recherche");
+                return;
             }
-        });
 
-        // OR search by input
-        searchForm.addEventListener("input", (e) =>
-        {   
-            e.preventDefault();
-            // Value entered in the search bar
-            const search = searchInput.value;
+            const recipeSearch = new Search(this.all, needle);
+            let filtered;
 
-            if (search.length >= 3)
+            if (this.algo === 'alt')
             {
-                const recipesSearch = new Search(recipes, search);
-                const newRecipes = recipesSearch.searchSort();
-                this.newGallery(newRecipes); // not sure about this line of code
-                return newRecipes;
-
-            } else {
-                this.display(recipes);
+                filtered = recipeSearch.goAlt(filtered);
+            } else
+            {
+                filtered = recipeSearch.go(filtered);
             }
+            
+            filtered = this.filter(filtered);
+
+            this.display(filtered);
+
+            return;
+
         });
-
     }
-  
-
 }
