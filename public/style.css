@@ -469,6 +469,28 @@ button:disabled {
         text-overflow: ellipsis;
     }
 
+    .search ::-webkit-input-placeholder {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .search ::-moz-placeholder {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .search :-ms-input-placeholder {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .search ::-ms-input-placeholder {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     .search ::placeholder {
         font-size: 13px;
         overflow: hidden;

@@ -168,14 +168,6 @@ export default class Filter
         if (`${this.ref}` == "ustensils") this.dom.input.setAttribute("placeholder", "Rechercher un ustensile");
     }
 
-    createNoResultHTML () {
-        const noResult = document.createElement('button')
-        noResult.classList.add('filter__result', 'no-result', 'm-0', 'p-3', 'pt-0', 'text-white', 'fs-6')
-        noResult.innerHTML = 'Aucun résultat'
-    
-        return noResult
-    }
-
     start()
     {
         const dropdown = new Dropdown(this.ref, this.placeholder, this.color);
