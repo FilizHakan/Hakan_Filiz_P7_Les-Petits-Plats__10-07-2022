@@ -1,4 +1,5 @@
-*, body {
+*, 
+body {
     font-family: 'lato', "Arial", "Sans-Serif";
     line-height: 1;
     box-sizing: border-box;
@@ -7,6 +8,7 @@
 input:focus-visible {
     outline: none;
 }
+
 .displayNone {
     display: none;
 }
@@ -30,7 +32,6 @@ ul li {
     list-style: none;
     font-size: 15px;
 }
-
 
 p {
     font-size: 0.95rem;
@@ -87,6 +88,7 @@ form {
 .tag__item i {
     padding-left: 0.5em;
 }
+
 .cardRecipes {
     padding-top: 5rem!important;
 }
@@ -96,6 +98,7 @@ form {
     padding-left: 50px;
     overflow: hidden;
 }
+
 .ingredients__results,
 .appareils__results,
 .ustensils__results{
@@ -105,7 +108,7 @@ form {
     border-bottom-left-radius: 8px;
     color: white;
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 13px;
     flex-wrap: wrap;
     margin-top: -5px;
     z-index: 1;
@@ -114,38 +117,46 @@ form {
     scroll-margin: 0;
     cursor: pointer;
 }
+
 .opened::-webkit-input-placeholder {
     color: white;
     opacity: 0.5;
-  }
+}
+
 .opened::-moz-placeholder {
     color: white;
     opacity: 0.5;
-  }
+}
+
 .opened:-ms-input-placeholder {
     color: white;
     opacity: 0.5;
-  }
+}
 .opened::-ms-input-placeholder {
     color: white;
     opacity: 0.5;
-  }
+}
+
 .opened::placeholder {
     color: white;
     opacity: 0.5;
-  }
+}
+
 .closed::-webkit-input-placeholder {
     color: white;
     opacity: 1;
 }
+
 .closed::-moz-placeholder {
     color: white;
     opacity: 1;
 }
+
 .closed:-ms-input-placeholder {
     color: white;
     opacity: 1;
 }
+
 .closed::-ms-input-placeholder {
     color: white;
     opacity: 1;
@@ -154,36 +165,41 @@ form {
     color: white;
     opacity: 1;
 }
+
 .closed::-moz-placeholder {
     color: white;
     opacity: 1;
 }
+
 .closed:-ms-input-placeholder {
     color: white;
     opacity: 1;
 }
+
 .closed::-ms-input-placeholder {
     color: white;
     opacity: 1;
 }
+
 .closed::placeholder {
     color: white;
     opacity: 1;
 }
+
 .col-xl-2, .col-xl-3, .col-xl-4 {
     transition: all 400ms ease;
 }
+
 .ingredients__results button,
 .appareils__results button,
 .ustensils__results button {
-    margin: 5px;
+    margin: 5px 5px 7px 5px;
     padding-left: 18px;
     flex: 30%;
     text-align: left;
     cursor: pointer;
     text-overflow: ellipsis;
-    overflow: hidden;
-    max-height: 24px;
+    max-height: 42px;
     border: none;
     background-color: transparent;
     color: white;
@@ -203,21 +219,25 @@ form {
     position: absolute;
     width: 1px;
 }
+
 button:disabled {
     text-decoration: line-through;
     color: white;
 }
+
 /* width */
 .ustensils__results::-webkit-scrollbar {
-    width: 12px;
+    width: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .appareils__results::-webkit-scrollbar {
-    width: 12px;
+    width: 0;
 }
 
 .ingredients__results::-webkit-scrollbar {
-    width: 12px;
+    width: 0;
 }
  
   /* Track */
@@ -237,44 +257,53 @@ button:disabled {
 .ustensils__results::-webkit-scrollbar-thumb {
     background: #ED6454; 
 }
+
 .appareils__results::-webkit-scrollbar-thumb {
     background: #68D9A4; 
 }
+
 .ingredients__results::-webkit-scrollbar-thumb {
     background: #3282F7; 
 }
+
 /* Handle on hover */
 .ustensils__results::-webkit-scrollbar-thumb:hover {
     background: #ED6454; 
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 .appareils__results::-webkit-scrollbar-thumb:hover {
     background: #68D9A4; 
 }
+
 .ingredients__results::-webkit-scrollbar-thumb:hover {
     background: #3282F7; 
 }
 
-
-.list {
-    line-height: 21.6px;
-}
 .hidden {
     display: none !important;
 }
+
 .bi-x-circle {
     cursor: pointer;
     position: relative;
     left: 0.5em;
 }
+
 .grey-background {
     background-color: #C7BEBE;
     width: 100%;
     height: 178px;
     border-radius: 8px 8px 0 0;
 }
+
 .content {
     border-radius: 0px 0px 8px 8px;
 }
+
 .recipe {
     background-color: #E7E7E7;
     transition: 190ms ease-in-out;
@@ -284,14 +313,17 @@ button:disabled {
     border-radius: 8px;
     box-shadow: 2px 2px 10px 7px #b0b0b05d;
 }
+
 .recipe:hover {
     box-shadow: 2px 2px 10px 7px #7b7b7b5d;
 
 }
+
 .row {
     margin-right: 30px;
     margin-left: 30px;
 }
+
 .flex {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
@@ -316,12 +348,15 @@ button:disabled {
 }
 
 @media (max-width:1400px){
+
     .recipe{
         height: 430px;
     }
+
     h1, h2 {
         font-size: 0.9em;
     }
+    
     .dropDownMenusArea {
         position: absolute;
         width: 94%;
@@ -365,28 +400,38 @@ button:disabled {
     padding: 20px;
     width: 100%;
 }
+
 .closed {
     transition: opacity .3s ease-in-out,
     flex .3s ease-in-out;
 }
+
 .closed:hover {
     opacity: .75;
 }
 
+button {
+    font-size:14px;
+}
+
+
 @media (max-width:1200px){
+
     .recipe{
         height: 560px;
-      
     }
+    
     h1, h2 {
         font-size: 1em;
     }
 }
 
 @media (max-width:992px){
+    
     .recipe{
         height: 470px;
     }
+
     h1, h2 {
         font-size: 1.2em;
     }
@@ -394,20 +439,21 @@ button:disabled {
     p{
         font-size:1em;
     }
-
-
 }
 
 @media (max-width:861px){
+
     .recipe{
         height: 500px;
     }
 }
 
 @media (max-width:770px){
+
     .recipe{
         height: 550px;
     }
+    
     .dropDownMenusArea {
         position: absolute;
         width: 92.55%;
@@ -416,6 +462,7 @@ button:disabled {
 
 
 @media (max-width:575px){
+
     .recipe{
         height: 500px;
     }
@@ -436,15 +483,19 @@ button:disabled {
     h1, h2 {
         font-size: 1.2em;
     }
+
     div button {
         font-size: 0.85em;
     }
+
     p{
     font-size:0.85em;
     }
+
     .search button {
         font-size: 12.5px;
     }
+
     .search ::-webkit-input-placeholder {
         font-size: 13px;
         overflow: hidden;
@@ -503,6 +554,5 @@ button:disabled {
     .cardRecipes {
         padding-top: 17rem!important;
     }
-
 }
 

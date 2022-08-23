@@ -30,7 +30,7 @@ export default class Search
 		return arrayRecipes;  
     }
 
-    // 2nd Algo with native loops: for and if/else
+    // 2nd Algo 
     goAlt()
     {
 		console.log('******needle******')

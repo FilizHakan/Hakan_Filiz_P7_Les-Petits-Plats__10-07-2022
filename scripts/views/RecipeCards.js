@@ -10,7 +10,6 @@ export default class RecipeCards
       this._description = data.description;
     }
   
-    // Create recipe cards
     renderCards() 
     {
       const recipeContainer = document.createElement("div");

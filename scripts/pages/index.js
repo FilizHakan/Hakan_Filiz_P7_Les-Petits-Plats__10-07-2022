@@ -6,7 +6,6 @@ import FilterByUstensils from '../classes/FilterByUstensils.js';
 
 import List from '../classes/List.js';
 
-
 const list = new List(recipes);
 list.display(list.all);
 

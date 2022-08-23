@@ -20,7 +20,30 @@ export default class Filter
         this.selection = [];
     }
 
-    // Display lists for each dropdown
+    closeDropdown()
+    {
+        this.dom.list.style.display = 'none';
+        document.querySelector(`.${this.ref}__results`).classList.add("invisible");
+        this.dom.close.style.display = 'none';
+        this.dom.open.style.display = 'block';
+        document.querySelector(`#${this.ref}`).classList.add("col-xl-2");
+        document.querySelector(`#${this.ref}`).classList.remove("col-xl-3");
+        this.dom.input.classList.add("closed");
+        this.dom.input.classList.remove("opened");
+        if (`${this.ref}` == "ingredients") this.dom.input.setAttribute("placeholder", "Ingrédients");
+        if (`${this.ref}` == "appareils") this.dom.input.setAttribute("placeholder", "Appareils");
+        if (`${this.ref}` == "ustensils") this.dom.input.setAttribute("placeholder", "Ustensiles");
+    }
+
+    disableSelectedItems()
+    {
+        this.selection.forEach( item =>
+            {
+                this.dom.list.querySelector(`[data-id="${item}"]`).disabled = true;
+                console.log(this.selection)
+            })
+    }
+
     display()
     {
         let html=''
@@ -38,7 +61,6 @@ export default class Filter
             this.dom.list.innerHTML = html;
     }
 
-    // Display tags above drop down
     displaySelection()
     {
         document.querySelector(`.tag-${this.ref}`).innerHTML = '';
@@ -54,21 +76,6 @@ export default class Filter
                 <i class="bi bi-x-circle closeTag"></i> 
             </div>`
         });
-    }
-
-    closeDropdown()
-    {
-        this.dom.list.style.display = 'none';
-        document.querySelector(`.${this.ref}__results`).classList.add("invisible");
-        this.dom.close.style.display = 'none';
-        this.dom.open.style.display = 'block';
-        document.querySelector(`#${this.ref}`).classList.add("col-xl-2");
-        document.querySelector(`#${this.ref}`).classList.remove("col-xl-3");
-        this.dom.input.classList.add("closed");
-        this.dom.input.classList.remove("opened");
-        if (`${this.ref}` == "ingredients") this.dom.input.setAttribute("placeholder", "Ingrédients");
-        if (`${this.ref}` == "appareils") this.dom.input.setAttribute("placeholder", "Appareils");
-        if (`${this.ref}` == "ustensils") this.dom.input.setAttribute("placeholder", "Ustensiles");
     }
 
     filter(needle)
@@ -93,16 +100,6 @@ export default class Filter
         });
     }
 
-    listenForOpeningDropdown()
-    {
-        
-        this.dom.open.addEventListener('click', () =>
-        {
-            this.openDropdown();
-        });
-    }
-    
-    // Function to get ingredients, appareils and ustensils tags
     listenForFiltering()
     {
         this.dom.input.addEventListener('input', e => 
@@ -112,7 +109,15 @@ export default class Filter
         })
     }
 
-    // Listen to all tags when click on it
+    listenForOpeningDropdown()
+    {
+        
+        this.dom.open.addEventListener('click', () =>
+        {
+            this.openDropdown();
+        });
+    }
+
     listenForSelection()
     {
         this.dom.list.querySelectorAll('.list').forEach( tag =>
@@ -139,15 +144,6 @@ export default class Filter
                 this.list.filter(this.list.all);
             });             
         });
-    }
-
-    disableSelectedItems()
-    {
-        this.selection.forEach( item =>
-            {
-                this.dom.list.querySelector(`[data-id="${item}"]`).disabled = true;
-                console.log(this.selection)
-            })
     }
 
     openDropdown()
