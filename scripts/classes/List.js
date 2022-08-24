@@ -31,7 +31,7 @@ export default class List {
 
         if (recipes.length === 0)
         {
-            this.errorMessage('Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc,.');
+            this.warning('Aucune recette ne correspond à votre critère... Vous pouvez chercher "tarte au citron", "poisson", etc,...');
             return;      
         }
 
@@ -43,11 +43,11 @@ export default class List {
         });
     }
 
-    errorMessage(errorMessage) {
+    warning(message) {
         const searchError = document.createElement("div");
 
         searchError.setAttribute("class", "searchError");
-        searchError.innerHTML = errorMessage;
+        searchError.innerHTML = message;
         this.dom.area.appendChild(searchError);
     }
 
@@ -79,7 +79,6 @@ export default class List {
         
     }
 
-    // Filter recipes according what it's typed in the search bar engine
     listenForSearch()
     {
         // Fetch elements in the index.html
@@ -98,22 +97,22 @@ export default class List {
                 return;
             }
 
-            if (needle.length > 0 && needle.length < 2)
+            if (needle.length > 0 && needle.length < 3)
             {
                 this.clearRecipeCards();
-                this.errorMessage("Veuillez entrer au minimum 3 caractères pour votre recherche");
+                this.warning("Veuillez entrer au minimum 3 caractères pour votre recherche");
                 return;
             }
 
-            const recipeSearch = new Search(this.all, needle);
+            const search = new Search(this.all, needle);
             let filtered;
 
             if (this.algo === 'alt')
             {
-                filtered = recipeSearch.goAlt(filtered);
+                filtered = search.goAlt(filtered);
             } else
             {
-                filtered = recipeSearch.go(filtered);
+                filtered = search.go(filtered);
             }
             
             filtered = this.filter(filtered);

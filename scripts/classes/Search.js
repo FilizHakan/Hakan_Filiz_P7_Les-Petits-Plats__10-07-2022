@@ -13,8 +13,8 @@ export default class Search
     {
 		console.log('******needle******')
 		console.log('needle :', this.needle)
-
 		console.time('algo 1')
+		
 		const arrayRecipes = this.recipes.filter((data) => 
 		{
 			let arrayIngredients = data.ingredients.map((el) => el.ingredient.toLowerCase());

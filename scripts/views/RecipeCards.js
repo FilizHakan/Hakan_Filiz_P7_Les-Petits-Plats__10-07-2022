@@ -26,7 +26,7 @@ export default class RecipeCards
                     <!-- recipe content -->
                     <div>
                       <div class="content">
-                        <div class="container p-4">
+                        <div class="container">
 
                           <!-- Time and title -->
                           <div class="flex">

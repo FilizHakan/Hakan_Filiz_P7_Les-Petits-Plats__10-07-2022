@@ -102,16 +102,18 @@ export default class Filter
 
     listenForFiltering()
     {
-        this.dom.input.addEventListener('input', e => 
+        this.dom.input.addEventListener('input', (e) => 
         {
+            e.preventDefault();
+
             const needle = e.target.value;
             this.filter(needle);
-        })
+            
+        });
     }
 
     listenForOpeningDropdown()
     {
-        
         this.dom.open.addEventListener('click', () =>
         {
             this.openDropdown();
@@ -177,6 +179,15 @@ export default class Filter
         this.display();
         this.listenForFiltering();
         this.listenForSelection();
+    }
+
+    warning(inputTagMessage)
+    {
+        const searchError = document.createElement("div");
+
+        searchError.setAttribute("class", "searchTagError");
+        searchError.innerHTML = inputTagMessage;
+        this.dom.list.appendChild(searchError);
     }
     
 }

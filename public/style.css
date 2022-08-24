@@ -13,10 +13,6 @@ input:focus-visible {
     display: none;
 }
 
-header img {
-    width: 280px;
-}
-
 h1{
     font-size: 1.280em;
     margin-bottom: 0;
@@ -37,12 +33,6 @@ p {
     font-size: 0.95rem;
 }
 
-.cardResume {
-    overflow-x: hidden;
-    max-height: 260px;
-    line-height: 5;
-}
-
 .ingredient-item {
     font-weight: 600;
 }
@@ -52,18 +42,25 @@ p {
 }
 
 .salmon-background button:hover {
-    background-color: #f38f84;
+    transform: scale(1.1);
+    transition: transform 0.15s linear;
     cursor: pointer;
 }
 
 .blue-background button:hover {
-    background-color: #64a0f9;
+    transform: scale(1.1);
+    transition: transform 0.15s linear;
     cursor: pointer;
 }
 
 .green-background button:hover {
-    background-color: #85dcb3;
+    transform: scale(1.1);
+    transition: transform 0.15s linear;
     cursor: pointer;
+}
+
+.search input:focus{
+    border-color: black;
 }
 
 form {
@@ -312,6 +309,7 @@ button:disabled {
     width: 100%;
     border-radius: 8px;
     box-shadow: 2px 2px 10px 7px #b0b0b05d;
+    margin-bottom: 15px;
 }
 
 .recipe:hover {
@@ -326,7 +324,7 @@ button:disabled {
 
 .flex {
     --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
+    --bs-gutter-y: 1.5rem;
     display: flex;
     flex-wrap: wrap;
     flex-shrink: 0;
@@ -354,7 +352,7 @@ button:disabled {
     }
 
     h1, h2 {
-        font-size: 0.9em;
+        font-size: 1.1em;
     }
     
     .dropDownMenusArea {
@@ -371,15 +369,20 @@ button:disabled {
     opacity: 0.7;
     border:none;
     margin-bottom: 20px;
-    height: 50px;
+    height: 60px;
 }
 
-.search button {
+.search button{
     background-color: transparent;
     border: none;
     position: absolute;
-    top:40%;
-    right:2%;
+    top:37%;
+    right:3%;
+    font-size: 20px;
+}
+
+.form-control:focus{
+    border-color:#d04f4f;
 }
 
 .ingredients i, .ustensils i, .appareils i {
@@ -402,16 +405,34 @@ button:disabled {
 }
 
 .closed {
-    transition: opacity .3s ease-in-out,
-    flex .3s ease-in-out;
+    transition: opacity .2s ease-in-out,
+    flex .2s ease-in-out;
+}
+
+.logo{
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .closed:hover {
     opacity: .75;
 }
 
-button {
-    font-size:14px;
+.searchTagError{
+    font-size: 15px;
+    margin: 5px;
+    padding-left: 18px;
+    line-height: 1.2;
+}
+
+.searchError{
+    color: #d04f4f;
+    font-weight: 600;
+    font-size: 1.8em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
 }
 
 

@@ -27,4 +27,5 @@ export default class FilterByAppliances extends Filter
             return (selection.includes(recipe.appliance.toLowerCase()));
         }); 
     }
+
 }

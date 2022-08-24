@@ -7,7 +7,6 @@ export default class Dropdown
         this.color = color;
     }
 
-
     createDropdown()
     {
         const container = document.createElement('div');
