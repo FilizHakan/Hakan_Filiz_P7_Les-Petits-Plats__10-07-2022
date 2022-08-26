@@ -13,14 +13,15 @@ export default class RecipeCards
     renderCards() 
     {
       const recipeContainer = document.createElement("div");
-      recipeContainer.setAttribute("class", "col-lg-4 col-sm-6");
+      recipeContainer.setAttribute("class", "wholeCard col-lg-4 col-sm-6");
   
       const recipeCard = `
                 <article class="container recipe p-0">
 
                     <!-- picture background - grey -->
                     <div class="cardImage">
-                      <div class="grey-background"></div>
+                      <div class="grey-background">
+                      </div>
                     </div>
 
                     <!-- recipe content -->

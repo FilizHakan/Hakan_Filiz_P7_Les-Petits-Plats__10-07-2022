@@ -100,14 +100,25 @@ export default class Filter
         });
     }
 
+    listenForOpeningByInput()
+    {
+        this.dom.input.addEventListener('click', (e) => 
+        {
+            e.preventDefault();
+            const needle = e.target.value;
+            this.filter(needle);   
+            this.openDropdown();  
+        });
+    }
+
     listenForFiltering()
     {
         this.dom.input.addEventListener('input', (e) => 
         {
             e.preventDefault();
-
             const needle = e.target.value;
-            this.filter(needle);
+            this.filter(needle);   
+            this.openDropdown();    
             
         });
     }
@@ -150,6 +161,7 @@ export default class Filter
 
     openDropdown()
     {
+        this.dom.input.style.display = 'block';
         this.dom.list.style.display = 'block';
         this.dom.open.style.display = 'none';
         this.dom.close.style.display = 'block';
@@ -174,6 +186,7 @@ export default class Filter
         document.querySelector(`.tagsArea`).innerHTML += `<div class="tag-${this.ref}"></div>`;
         this.closeDropdown();
         this.listenForOpeningDropdown();
+        this.listenForOpeningByInput();
         this.listenForClosingDropdown();
         this.hydrate(this.list.all);
         this.display();
