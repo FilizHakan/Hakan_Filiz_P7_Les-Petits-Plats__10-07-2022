@@ -141,6 +141,7 @@ export default class Filter
                 const value = tag.dataset.id;
                 this.selection.push(value);
                 this.list.filter(this.list.all);
+                this.closeDropdown(tag);
             })
         });
     }

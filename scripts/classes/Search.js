@@ -20,13 +20,13 @@ export default class Search
 			let arrayIngredients = data.ingredients.map((el) => el.ingredient.toLowerCase());
 
 			return (
-			normalise(data.name).includes(normalise(this.needle, true)) || // By name
+			normalise(data.name).includes(normalise(this.needle, true)) || // By title
 			normalise(data.description).includes(normalise(this.needle, true)) || // By description
 			arrayIngredients.join().includes(normalise(this.needle, true)) // By ingredients
 			);
 
 		});
-		console.timeEnd('algo 1')
+		console.timeEnd('algo 1');
 		return arrayRecipes;  
     }
 
@@ -44,8 +44,8 @@ export default class Search
 		{
 			const recipe = this.recipes[j];
 
-			if (normalise(recipe.name).includes(normalise(this.needle, true)) ||
-			normalise(recipe.description).includes(normalise(this.needle, true)))
+			if (normalise(recipe.name).includes(normalise(this.needle, true)) || // By title
+			normalise(recipe.description).includes(normalise(this.needle, true))) // By description
 			{
 				arrayRecipes[index] = recipe;
 				index++;
