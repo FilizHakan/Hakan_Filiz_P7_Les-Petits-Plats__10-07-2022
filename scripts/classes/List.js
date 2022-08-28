@@ -31,7 +31,7 @@ export default class List {
 
         if (recipes.length === 0)
         {
-            this.warning('Aucune recette ne correspond à votre critère... Vous pouvez chercher "tarte au citron", "poisson", etc,...');
+            this.warning('Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.');
             return;      
         }
 
