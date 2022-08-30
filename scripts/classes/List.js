@@ -107,14 +107,8 @@ export default class List {
             const search = new Search(this.all, needle);
             let filtered;
 
-            if (this.algo === 'alt')
-            {
-                filtered = search.goAlt(filtered); // 2nd algo: Boucles Natives
-            } else
-            {
-                filtered = search.go(filtered); // 1st algo: Programmation Fonctionnelle
-            }
-            
+            filtered = search.go(filtered); // 1st algo: Programmation Fonctionnelle
+       
             filtered = this.filter(filtered);
 
             this.display(filtered);
