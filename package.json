@@ -1,0 +1,22 @@
+{
+  "name": "hakan_filiz_p7_les-petits-plats__10072022",
+  "version": "1.0.0",
+  "description": "![Les petits plats](https://raw.githubusercontent.com/FilizHakan/Hakan_Filiz_P7_Les-Petits-Plats__10-07-2022/assets/logo/logo-500x500.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FilizHakan/P7_LesPetitsPlats.git"
+  },
+  "author": "Filiz Hakan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FilizHakan/P7_LesPetitsPlats/issues"
+  },
+  "homepage": "https://github.com/FilizHakan/P7_LesPetitsPlats#readme",
+  "devDependencies": {
+    "eslint": "^8.23.0"
+  }
+}
