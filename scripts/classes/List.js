@@ -109,10 +109,10 @@ export default class List {
 
             if (this.algo === 'alt')
             {
-                filtered = search.goAlt(filtered);
+                filtered = search.goAlt(filtered); // 2nd algo: Boucles Natives
             } else
             {
-                filtered = search.go(filtered);
+                filtered = search.go(filtered); // 1st algo: Programmation Fonctionnelle
             }
             
             filtered = this.filter(filtered);
