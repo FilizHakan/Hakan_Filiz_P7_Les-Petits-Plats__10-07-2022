@@ -1723,5 +1723,5 @@ export const recipes = [
         "appliance": "Four",
         "ustensils":["rouleau à patisserie","fouet"]
     }
-    
+  
 ]
