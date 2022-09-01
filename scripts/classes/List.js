@@ -107,7 +107,7 @@ export default class List {
             const search = new Search(this.all, needle);
             let filtered;
 
-            filtered = search.go(filtered); // 1st algo: Programmation Fonctionnelle
+            filtered = search.go(filtered);
        
             filtered = this.filter(filtered);
 
