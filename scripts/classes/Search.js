@@ -8,8 +8,7 @@ export default class Search
         this.needle = normalise(needle, true);
     }
 
-    // 2nd Algo : Boucles Natives
-    goAlt()
+    go()
     {
 		console.log('******needle******')
 		console.log('needle :', this.needle)
