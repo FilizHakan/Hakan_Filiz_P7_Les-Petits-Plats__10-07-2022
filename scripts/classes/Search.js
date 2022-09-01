@@ -7,8 +7,7 @@ export default class Search
         this.recipes = recipes;
         this.needle = normalise(needle, true);
     }
-
-    // 1st Algo : Programmation Fonctionnelle
+	
     go() 
     {
 		console.log('******needle******')
