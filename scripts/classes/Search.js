@@ -49,7 +49,7 @@ export default class Search
 
 	isNeedleInTitleOrDescription(recipe)
 	{
-		if (normalise(recipe.name).includes((this.needle)) 
+		if (normalise(recipe.name).includes(this.needle)) 
 		{
 			return true;
 		} 
