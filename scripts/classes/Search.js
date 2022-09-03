@@ -37,7 +37,7 @@ export default class Search
 
 		for (let i = 0; i < recipe.ingredients.length; i++)
 		{
-			if (recipe.ingredients[i].ingredient.toLowerCase().includes(normalise(this.needle, true))) // By ingredients
+			if (recipe.ingredients[i].ingredient.toLowerCase().includes(this.needle)) // By ingredients
 			{
 				arrayRecipes[index] = recipe;
 				return true;
@@ -49,12 +49,12 @@ export default class Search
 
 	isNeedleInTitleOrDescription(recipe)
 	{
-		if (normalise(recipe.name).includes(normalise(this.needle, true))) 
+		if (normalise(recipe.name).includes((this.needle)) 
 		{
 			return true;
 		} 
 
-		if (normalise(recipe.description).includes(normalise(this.needle, true))) // By description
+		if (normalise(recipe.description).includes(this.needle)) // By description
 		{
 			return true;
 		}
