@@ -27,7 +27,11 @@ export default class Filter
         this.dom.close.style.display = 'none';
         this.dom.open.style.display = 'block';
         document.querySelector(`#${this.ref}`).classList.add("col-xl-2");
-        document.querySelector(`#${this.ref}`).classList.remove("col-xl-3");
+        if (`${this.ref}` === "ingredients") document.querySelector(`#ingredients`).classList.remove("col-xl-4");
+        if (`${this.ref}` === "ingredients") document.querySelector(`#ingredients`).classList.remove("col-xl-3");
+        if (`${this.ref}` === "ustensils") document.querySelector(`#ustensils`).classList.remove("col-xl-4");
+        if (`${this.ref}` === "ustensils") document.querySelector(`#ustensils`).classList.remove("col-xl-3");  
+        if (`${this.ref}` === "appareils") document.querySelector(`#appareils`).classList.remove("col-xl-3");  
         this.dom.input.classList.add("closed");
         this.dom.input.classList.remove("opened");
         if (`${this.ref}` == "ingredients") this.dom.input.setAttribute("placeholder", "Ingrédients");
