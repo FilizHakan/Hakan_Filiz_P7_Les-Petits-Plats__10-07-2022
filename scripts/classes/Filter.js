@@ -167,7 +167,9 @@ export default class Filter
         this.dom.open.style.display = 'none';
         this.dom.close.style.display = 'block';
         document.querySelector(`#${this.ref}`).classList.remove("col-xl-2");
-        document.querySelector(`#${this.ref}`).classList.add("col-xl-3");  
+        if (`${this.ref}` == "ingredients") document.querySelector(`#ingredients`).classList.add("col-xl-4");
+        if (`${this.ref}` == "ustensils") document.querySelector(`#ustensils`).classList.add("col-xl-4");  
+        if (`${this.ref}` == "appareils") document.querySelector(`#appareils`).classList.add("col-xl-3");  
         document.querySelector(`.${this.ref}__results`).classList.remove("invisible");
         this.dom.input.classList.remove("closed");
         this.dom.input.classList.add("opened");
